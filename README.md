@@ -2,7 +2,7 @@
 
 The actual React/TypeScript frontend of a platform connecting technology leaders with nonprofit board opportunities. It includes candidate and organization applications, role-aware administration, matching, candidate comparisons, corporate-client configuration and reusable interface components.
 
-Related repository: [board-dev-backend](https://github.com/bartkozik/board-dev-backend).
+The backend is maintained separately and is not publicly available.
 
 Bartosz Kozikowski worked on the frontend as part of the product team and communicated directly with the client. His contributions include application forms and validation, matching views and candidate comparison workflows. This repository preserves the team application's structure; it does not claim sole authorship of the whole product or its backend.
 
