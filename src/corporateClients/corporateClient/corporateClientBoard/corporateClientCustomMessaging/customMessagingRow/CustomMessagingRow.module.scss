@@ -1,0 +1,21 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-end, column, $gap: 10px);
+  width: 100%;
+}
+
+.textAreaContainer {
+  @include flex-container(space-between, center, $gap: 20px);
+  width: 100%;
+}
+
+.label {
+  @include flex-container(flex-start, center, $gap: 4px);
+  @include font(13);
+
+  span {
+    color: $color-success;
+    font-weight: $font-w-bold;
+  }
+}

@@ -1,0 +1,62 @@
+@use '@/theme/index' as *;
+
+.table {
+  tbody {
+    background-color: $color-brighter-antiflash-white;
+  }
+
+  @include table-cell-width('User', 40%);
+  @include table-cell-width('Company', 15%);
+  @include table-cell-width('Type', 10%);
+  @include table-cell-width('Date modified', 15%);
+  @include table-cell-width('Date added', 10%);
+  @include table-cell-width('Action', 3%);
+
+  @include screen-max(1180px) {
+    @include table-cell-width('User', 30%);
+    @include table-cell-width('Company', 17%);
+  }
+
+  @include screen-sm-minus {
+    @include table-cell-width('User', 20%);
+    @include table-cell-width('Company', 20%);
+    @include table-cell-width('Type', 20%);
+    @include table-cell-width('Date added', 28%);
+    @include table-cell-width('Action', 10%);
+    th:nth-child(4),
+    td:nth-child(4) {
+      display: none;
+    }
+
+    tbody,
+    tr {
+      td:first-child {
+        padding: 15px 0 15px 22px;
+      }
+    }
+  }
+
+  @include screen-xs {
+    @include table-cell-width('User', 60%);
+    @include table-cell-width('Type', 30%);
+    @include table-cell-width('Action', 10%);
+    th:not(:nth-child(1)):not(:last-child),
+    td:not(:nth-child(1)):not(:last-child) {
+      display: none;
+    }
+
+    tbody,
+    tr {
+      td:first-child {
+        padding: 30px 0 30px 22px;
+      }
+    }
+  }
+
+  @include screen-max(548px) {
+    th:not(:nth-child(1)):not(:last-child),
+    td:not(:nth-child(1)):not(:last-child) {
+      display: none;
+    }
+  }
+}

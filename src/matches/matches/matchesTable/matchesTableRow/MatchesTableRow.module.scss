@@ -1,0 +1,18 @@
+@use '@/theme/index' as *;
+
+.techLeaderContainer {
+  @include flex-container(space-between, center);
+  width: 100%;
+  padding-right: 13px;
+}
+
+.userDetails span {
+  max-width: 160px;
+  @include shorten-long-string;
+}
+
+.dateContainer {
+  @include flex-container(flex-start, center);
+  width: 100%;
+  padding-right: 16px;
+}

@@ -1,0 +1,29 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 20px);
+}
+
+.section {
+  margin: 16px 72px 0 0;
+  @include font(16, $height: 21px);
+
+  &.shortSummary {
+    border-bottom: 1px solid $color-lavender-gray;
+    padding-bottom: 24px;
+  }
+}
+
+.label {
+  @include font(20, $height: 42px);
+  font-family: $font-secondary;
+}
+
+.button {
+  align-self: flex-end;
+}
+
+.externalLinkButtons {
+  width: 100%;
+  @include flex-container(flex-end, flex-end, $gap: 16px);
+}

@@ -1,0 +1,33 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 11px);
+  width: 100%;
+  position: relative;
+}
+
+.groupLabel {
+  @include font(13, $weight: medium);
+  color: $color-oxford-blue;
+}
+
+.children {
+  @include flex-container(flex-start, flex-start, column, $gap: 2px);
+  margin-top: 2px;
+  width: 100%;
+  position: relative;
+}
+
+.childrenError {
+  * {
+    border-color: $color-error;
+  }
+}
+
+.error {
+  @include font(12);
+  position: absolute;
+  color: $color-error;
+  top: calc(100% + 3px);
+  left: 0;
+}

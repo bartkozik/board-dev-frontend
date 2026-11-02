@@ -1,0 +1,56 @@
+@use '@/theme/index' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  overflow: auto;
+}
+
+.slidingPanel {
+  width: 598px;
+  height: 100%;
+  background-color: $color-white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: $box-shadow;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  padding: 38px 0;
+  color: $color-oxford-blue;
+  @include vertical-scrollbar;
+
+  @include screen-max(576px) {
+    width: 100%;
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.header {
+  @include flex-container(flex-start, center, $gap: 16px);
+  padding: 0 48px 16px;
+}
+
+.actionBtns {
+  @include flex-container(flex-start, flex-end, column, false, 28px);
+  padding: 0 48px;
+  margin-bottom: -16px;
+}
+
+.title {
+  font-family: $font-secondary;
+  @include font(32, $weight: 300);
+}
+
+.wrapper {
+  padding: 0 48px;
+
+  &.maxWidth {
+    padding: 0;
+  }
+}

@@ -1,0 +1,25 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-center;
+  padding: 0;
+}
+
+.small {
+  height: auto;
+  width: 115px;
+}
+
+.medium {
+  height: auto;
+  width: 230px;
+}
+
+.large {
+  height: auto;
+  width: 365px;
+}
+
+.noCursor {
+  cursor: default;
+}

@@ -1,0 +1,41 @@
+@use '@/theme/index' as *;
+
+.root {
+  width: 100%;
+  background-color: transparent;
+
+  .breadcrumbsWrapper {
+    @include flex-container;
+    color: $color-slate-gray;
+    gap: 8px;
+
+    .breadcrumb,
+    li {
+      list-style: none;
+      @include flex-container(center, center);
+      gap: 8px;
+      @include font(13);
+
+      .label {
+        color: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        line-height: 1;
+        height: 18px;
+        @include flex-center;
+
+        &.withLink {
+          &:hover {
+            opacity: 0.6;
+            transition: opacity 0.2s ease-in-out;
+            cursor: pointer;
+          }
+        }
+      }
+
+      svg path {
+        fill: $color-white;
+      }
+    }
+  }
+}

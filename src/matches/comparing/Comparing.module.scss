@@ -1,0 +1,134 @@
+@use '@/theme/index' as *;
+
+@mixin compared-cards-container($height: 176px) {
+  @include flex-container(flex-start, flex-start);
+  width: calc(100% - 495px);
+  position: absolute;
+  top: 0;
+  left: 540px;
+  right: 0;
+  margin: 0;
+  padding: 0 0 0 18px;
+  overflow-x: scroll;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $height;
+    width: 18px;
+    background-color: $color-white;
+  }
+}
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 30px);
+  width: 100%;
+}
+
+.comparingBoard {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+}
+
+.comparedCardsHeader {
+  @include flex-container(flex-start, flex-start);
+  width: 100%;
+  position: relative;
+
+  .mainCardHeader {
+    position: absolute;
+    top: 0;
+    min-width: 558px;
+    border-radius: 24px 24px 0 0;
+    z-index: 3;
+  }
+
+  .withFixedPosition {
+    position: fixed;
+    top: 0;
+    height: 176px;
+    box-shadow: $card-box-shadow-scroll;
+  }
+
+  .comparedHeaderContainer {
+    @include compared-cards-container;
+    max-height: 176px;
+    overflow-y: hidden;
+    z-index: 2;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .comparedHeaderCardWithBorder {
+      border-left: 1px solid $color-border;
+    }
+  }
+
+  .withComparedFixedPosition {
+    width: calc(100% - 585px);
+    max-width: fit-content;
+    position: fixed;
+    top: 0;
+    left: 585px;
+    box-shadow: $card-box-shadow-scroll;
+  }
+}
+
+.comparedWrapper {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+  height: fit-content;
+}
+
+.comparedContainer {
+  @include compared-cards-container(100%);
+  z-index: 1;
+}
+
+.comparedContainerScrollbar {
+  left: 600px;
+}
+
+.mainCard {
+  min-width: 558px;
+  z-index: 2;
+  border-radius: 24px;
+  box-shadow: $card-box-shadow;
+}
+
+.comparedCard {
+  min-width: 378px;
+  border-radius: none;
+}
+
+.withBorder::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 568px;
+  max-height: 568px;
+  border-left: 1px solid $color-border;
+}
+
+.isLast {
+  border-radius: 0 24px 24px 0;
+}
+
+.header {
+  width: 100%;
+}
+
+.actions {
+  @include flex-container(flex-end, center, $gap: 16px);
+  width: 100%;
+}
+
+.actionButton {
+  min-width: 200px;
+}

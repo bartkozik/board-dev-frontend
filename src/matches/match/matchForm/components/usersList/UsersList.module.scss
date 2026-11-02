@@ -1,0 +1,29 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container($flex-flow: column, $gap: 40px);
+  width: 100%;
+}
+
+.searchbar {
+  align-self: flex-start;
+  max-width: 548px;
+}
+
+.searchAndFilters {
+  @include flex-container(flex-start, flex-start, $gap: 8px);
+}
+
+.filterButtonLabel {
+  @include flex-container(space-between, center, $gap: 8px);
+
+  .filterCountChip {
+    @include flex-container(center, center);
+    width: 22px;
+    height: 22px;
+    border-radius: 8px;
+    background-color: $color-palatinate-blue-lighter;
+    color: $color-palatinate-blue;
+    @include font(13, 600);
+  }
+}

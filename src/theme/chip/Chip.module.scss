@@ -1,0 +1,99 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-center;
+  @include font(13, $weight: $font-w-medium);
+  width: fit-content;
+  max-width: 160px;
+  min-width: 64px;
+  height: 24px;
+  border-radius: 20px;
+  padding: 4px 13.5px;
+  text-transform: initial;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.withCursorPointer {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-palatinate-blue-light;
+  }
+}
+
+.smallPadding {
+  padding: 4px 5px 4px 10px;
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  color: inherit;
+  cursor: inherit;
+}
+
+.icon {
+  min-width: 24px;
+}
+
+.info {
+  background-color: $color-palatinate-blue-lighter;
+  color: $color-oxford-blue;
+}
+
+.status {
+  background-color: $color-palatinate-blue;
+  color: $color-white;
+}
+
+.data {
+  background-color: $color-oxford-blue;
+  color: $color-white;
+}
+
+.important {
+  background-color: $color-success-dark;
+  color: $color-white;
+}
+
+.warning {
+  background-color: $color-error;
+  color: $color-white;
+}
+
+.outlined {
+  background-color: transparent;
+  border: 1px solid $color-success-alt;
+  color: $color-oxford-blue;
+}
+
+.regular {
+  background-color: $color-lavender-gray;
+  color: $color-oxford-blue;
+}
+
+.filter {
+  border: 1px solid $color-oxford-blue;
+  border-radius: 16px;
+  max-width: fit-content;
+  padding: 0 16px;
+  @include font(13, $weight: 500, $height: 18px);
+  @include flex-container(center, center, $gap: 0);
+
+  &:hover {
+    background-color: $color-palatinate-blue-lighter;
+  }
+
+  &.isSelected {
+    background-color: $color-palatinate-blue;
+    border-color: $color-palatinate-blue;
+    padding: 0 13px 0 5px;
+    color: $color-white;
+  }
+}

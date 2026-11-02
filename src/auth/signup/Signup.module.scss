@@ -1,0 +1,38 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(center, center, column);
+  height: 100vh;
+  background: $color-bg;
+}
+
+.card {
+  @include flex-container($flex-flow: column, $justify-content: space-between, $gap: 12px);
+  @include card;
+  width: 443px;
+  height: fit-content;
+  margin: 32px 0 21px 0;
+  padding: 24px 24px 32px;
+}
+
+.form {
+  @include flex-container($flex-flow: column, $gap: 20px);
+}
+
+.invitation {
+  text-align: center;
+  @include font(15, $height: 21px);
+}
+
+.messageContainer {
+  @include flex-container($flex-flow: column, $justify-content: space-between);
+  height: 100%;
+  min-height: 164px;
+}
+
+.message {
+  @include font(16, $height: 24px);
+  @include flex-container($flex-flow: column, $gap: 20px);
+  width: 364px;
+  color: $color-oxford-blue;
+}

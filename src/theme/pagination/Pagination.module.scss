@@ -1,0 +1,59 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, center);
+  padding: 18px 0;
+  width: 100%;
+}
+
+.buttons {
+  @include flex-container(flex-end, center, $gap: 0);
+  min-width: 221px;
+
+  button {
+    border: none;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    color: $color-slate-gray;
+    cursor: pointer;
+    @include font(14);
+    font-family: inherit;
+
+    &:disabled {
+      opacity: 0.2;
+      cursor: default;
+    }
+  }
+}
+
+.arrowBtn {
+  @include flex-center;
+  margin-right: 16px;
+  &:last-child {
+    margin-right: 0;
+    margin-left: 16px;
+  }
+}
+
+.pageBtn {
+  color: $color-primary;
+
+  &.active {
+    background-color: $color-oxford-blue;
+    border-radius: 5px;
+    @include font(12);
+  }
+}
+
+.nextPage {
+  rotate: 180deg;
+}
+
+.summary {
+  @include font(14);
+
+  .text {
+    color: $color-slate-gray;
+  }
+}

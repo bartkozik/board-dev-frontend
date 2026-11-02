@@ -1,0 +1,12 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, center);
+  width: 100%;
+  height: 32px;
+  padding: 7px 16.5px;
+  border-radius: 8px;
+  background-color: $color-antiflash-white;
+  @include font(13, $font-w-bold);
+  color: $color-slate-gray;
+}

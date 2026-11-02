@@ -1,0 +1,130 @@
+@use '@/theme/index' as *;
+
+.inputGroup {
+  @include flex-container(flex-start, center, $gap: 11px);
+  position: relative;
+
+  .input {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    min-width: 18px;
+    border: 1px solid $color-slate-gray;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      position: absolute;
+      top: 4px;
+      left: 25%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 8px 8px $color-palatinate-blue;
+    }
+
+    &:hover::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &:checked {
+      border-color: transparent;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &.readonlyInput:not(:checked) {
+      border: none;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &.disabledInput {
+      opacity: 0.5;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    &::before {
+      content: url('../assets/svg/checkmark.svg');
+      position: absolute;
+      top: -1.5px;
+      left: 0.3px;
+      font-family: none;
+      width: 16px;
+      height: 16px;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+    }
+
+    &:checked::before {
+      transform: scale(1) translateY(-3px) translateX(-4px);
+    }
+  }
+
+  .input.grayscaled {
+    &::before {
+      content: '';
+      mask: url('../assets/svg/checkmark.svg') no-repeat center / contain;
+      background-color: $color-slate-gray;
+
+      position: absolute;
+      top: -7px;
+      left: 0.3px;
+      width: 24px;
+      height: 24px;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+    }
+
+    &:checked::before {
+      transform: scale(1) translateY(-3px) translateX(-4px);
+    }
+  }
+
+  .notCheckedIcon {
+    position: absolute;
+    top: -1.2;
+    left: -3.3px;
+    z-index: 10;
+  }
+
+  .notCheckedIconGrayscaled {
+    top: -9px;
+    left: 0.3px;
+  }
+
+  .label {
+    @include font(15);
+    color: $color-oxford-blue;
+    cursor: pointer;
+
+    &.disabledLabel {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    &.readOnlyLabel {
+      cursor: default;
+    }
+  }
+}

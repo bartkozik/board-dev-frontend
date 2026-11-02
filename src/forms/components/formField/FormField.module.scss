@@ -1,0 +1,49 @@
+@use '@/theme/index' as *;
+
+@mixin error-display {
+  @include font(12);
+  position: absolute;
+  color: $color-error;
+  left: 0;
+  top: 100%;
+}
+
+.scaleSection {
+  @include flex-container(flex-start, flex-start, column, $gap: 24px);
+  margin-bottom: 16px;
+  position: relative;
+
+  .error {
+    @include error-display;
+  }
+}
+
+.multipleScaleSection {
+  @include flex-container(flex-start, flex-start, column);
+  margin-top: 20px;
+
+  .title {
+    @include font(13, $weight: $font-w-bold);
+    margin-bottom: 36px;
+  }
+
+  .sectionTitle {
+    @include font(22, $weight: $font-w-light);
+    margin-bottom: 16px;
+  }
+
+  .sectionSubtitle {
+    @include font(16);
+    margin-bottom: 20px;
+  }
+
+  .scaleContainer {
+    @include flex-container(flex-start, flex-start, column, $gap: 24px);
+    position: relative;
+    margin-top: 32px;
+  }
+
+  .error {
+    @include error-display;
+  }
+}

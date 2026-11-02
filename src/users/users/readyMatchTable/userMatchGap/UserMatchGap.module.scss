@@ -1,0 +1,33 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-end, center);
+  width: 100%;
+
+  span {
+    @include font(14);
+    color: $color-oxford-blue;
+    margin-right: 16px;
+  }
+
+  .dots {
+    @include flex-container(flex-end, center, $gap: 4px);
+    width: 36px;
+  }
+
+  .dot {
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    background-color: $color-slate-gray;
+  }
+
+  .redDot {
+    background-color: $color-red;
+  }
+
+  .weeksContainer {
+    @include flex-container(flex-end, center, $gap: 14px);
+    width: 100%;
+  }
+}

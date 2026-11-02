@@ -1,0 +1,76 @@
+@use '@/theme/index' as *;
+
+.table {
+  tbody {
+    background-color: $color-brighter-antiflash-white;
+  }
+  @include table-cell-width('Select', 2%);
+  @include table-cell-width('User', 30%);
+  @include table-cell-width('Company', 15%);
+  @include table-cell-width('Type', 10%);
+  @include table-cell-width('Interests', 20%);
+  @include table-cell-width('Date modified', 9%);
+  @include table-cell-width('Waiting for a match', 13%);
+
+  tbody,
+  tr {
+    td:first-child {
+      padding: 20px;
+    }
+  }
+
+  @include screen-max(1050px) {
+    @include table-cell-width('Select', 2%);
+    @include table-cell-width('User', 40%);
+    @include table-cell-width('Company', 20%);
+    @include table-cell-width('Type', 10%);
+    @include table-cell-width('Interests', 20%);
+    @include table-cell-width('Date modified', 14%);
+    @include table-cell-width('Waiting for a match', 16%);
+
+    th:nth-child(4),
+    td:nth-child(4),
+    th:nth-child(5),
+    td:nth-child(5) {
+      display: none;
+    }
+
+    tbody,
+    tr {
+      td:first-child {
+        padding: 15px;
+      }
+    }
+  }
+
+  @include screen-xs {
+    @include table-cell-width('Select', 2%);
+    @include table-cell-width('User', 20%);
+    @include table-cell-width('Company', 10%);
+    @include table-cell-width('Interests', 40%);
+    @include table-cell-width('Date modified', 10%);
+    @include table-cell-width('Waiting for a match', 20%);
+    th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
+    td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:last-child) {
+      display: none;
+    }
+
+    tbody,
+    tr {
+      td:nth-child(2) {
+        padding: 30px 0 30px 0px;
+      }
+    }
+  }
+
+  @include screen-max(548px) {
+    th:not(:nth-child(1)):not(:last-child),
+    td:not(:nth-child(1)):not(:last-child) {
+      display: none;
+    }
+  }
+}
+
+.selectAll {
+  max-width: 54px;
+}

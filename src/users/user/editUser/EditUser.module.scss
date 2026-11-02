@@ -1,0 +1,35 @@
+@use '@/theme/index' as *;
+
+.breadcrumbs {
+  position: absolute;
+  top: 21.5px;
+}
+
+.header {
+  width: 100%;
+}
+
+.userDetails {
+  @include flex-container;
+  width: 100%;
+  border-radius: 24px;
+  min-height: fit-content;
+  padding: 24.75px 24px;
+  background-color: $color-white;
+  margin-top: 32px;
+
+  @include screen-xs {
+    width: 100%;
+    margin-left: 0;
+    padding: 12.37px 12px;
+  }
+}
+
+.form {
+  @include flex-container(flex-start, flex-start, column, $gap: 17px);
+  width: 32%;
+}
+
+.submitButton {
+  margin-top: 20px;
+}

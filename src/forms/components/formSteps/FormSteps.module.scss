@@ -1,0 +1,122 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(center, flex-start, $gap: 11.5px);
+  @include font(14, $font-w-medium);
+  width: 100%;
+
+  color: $color-slate-gray;
+  padding: 0 146px 29px 146px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: $color-antiflash-white;
+    top: 52px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 8px;
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: var(--progress-width, 0%);
+    top: 52px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 8px;
+    background-color: $color-palatinate-blue;
+    display: block;
+  }
+
+  .percentage {
+    position: absolute;
+    top: 46px;
+    left: var(--progress-width, 0%);
+    transform: translateX(12%);
+    @include font(13, $font-w-medium);
+    color: $color-oxford-blue;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .percentageUnderProgress {
+    top: 60px;
+    left: calc(var(--progress-width, 0%) - 109px);
+  }
+}
+
+.formStep {
+  @include flex-container(space-between, center, $gap: 11.5px);
+  width: 100%;
+}
+
+.notActiveStep {
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+
+    .headline {
+      color: $color-oxford-blue;
+    }
+
+    .stepNumber {
+      background-color: $color-palatinate-blue;
+    }
+  }
+}
+
+.headline {
+  @include flex-container(flex-start, center, $gap: 12px);
+  width: 100%;
+  white-space: nowrap;
+}
+
+.error {
+  color: $color-error;
+
+  .stepNumber {
+    background-color: $color-error;
+  }
+}
+
+.stepNumber {
+  @include flex-center;
+  @include font(12);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: $color-lavender-gray;
+  color: $color-white;
+  font-weight: bold;
+}
+
+.separatorContainer {
+  @include flex-center;
+  width: 100%;
+  flex-grow: 1;
+  margin: 0 12px;
+}
+
+.separator {
+  width: 24px;
+  height: 1px;
+  background-color: $color-lavender-gray;
+}
+
+.selected {
+  position: relative;
+  color: $color-oxford-blue;
+
+  .stepNumber {
+    background-color: $color-palatinate-blue;
+  }
+}

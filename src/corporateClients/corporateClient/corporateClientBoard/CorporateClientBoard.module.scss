@@ -1,0 +1,59 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+
+  @include screen-sm-minus {
+    width: 100%;
+  }
+}
+
+.breadcrumbs {
+  position: absolute;
+  top: 21.5px;
+}
+
+.addUserButton {
+  margin-left: 40px;
+
+  @include screen-xs {
+    margin-left: 0;
+  }
+}
+
+.loadingArea {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 45px;
+
+  @include screen-xs {
+    @include flex-container(flex-start, flex-start, column);
+    margin-bottom: 15px;
+  }
+
+  .actions {
+    @include flex-container(flex-start, flex-start, row, $gap: 16px);
+    width: 100%;
+    margin-left: 24px;
+
+    @include screen-min($screen-sm-min) {
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+
+    @include screen-xs {
+      @include flex-container(space-between, center);
+      width: 100%;
+      margin: 10px 0;
+
+      button {
+        width: 200px;
+      }
+    }
+  }
+}

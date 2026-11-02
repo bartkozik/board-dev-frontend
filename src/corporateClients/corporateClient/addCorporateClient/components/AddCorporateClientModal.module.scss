@@ -1,0 +1,14 @@
+@use '@/theme/index' as *;
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 20px);
+  width: 100%;
+}
+
+.actions {
+  width: 100%;
+  justify-self: flex-end;
+
+  button {
+    min-width: 114px;
+  }
+}

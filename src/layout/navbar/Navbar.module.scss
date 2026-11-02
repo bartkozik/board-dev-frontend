@@ -1,0 +1,81 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, center);
+  width: 100%;
+  height: 100%;
+  margin-left: 78px;
+}
+
+.navList {
+  @include flex-container(flex-start, center);
+  width: 100%;
+}
+
+.link {
+  @include font(15);
+
+  a {
+    @include flex-container(flex-start, center);
+    color: $color-slate-gray;
+  }
+
+  .dropdownLink {
+    margin: 0 32px;
+  }
+
+  .dropdownMenu {
+    right: -143px;
+    top: 29px;
+  }
+
+  .linkLabel {
+    @include flex-container(flex-start, center);
+    width: fit-content;
+    color: $color-slate-gray;
+  }
+
+  &Active {
+    color: $color-oxford-blue;
+
+    .linkLabel {
+      color: $color-oxford-blue;
+
+      &::after {
+        top: 42.5px;
+        width: 89%;
+      }
+    }
+
+    span {
+      color: $color-oxford-blue;
+      font-weight: $font-w-medium;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        top: 39px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $color-palatinate-blue;
+        display: block;
+      }
+    }
+  }
+
+  &NotActive {
+    color: $color-slate-gray;
+
+    svg path:nth-of-type(2) {
+      fill: $color-gray;
+    }
+  }
+
+  &Icon {
+    @include flex-container(flex-start, center);
+    width: 31px;
+  }
+}

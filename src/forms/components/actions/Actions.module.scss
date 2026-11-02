@@ -1,0 +1,6 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, center, $gap: 16px);
+  margin-top: 30px;
+}

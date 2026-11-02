@@ -1,0 +1,22 @@
+@use '@/theme/index' as *;
+
+.root {
+  padding-top: 36px;
+
+  p {
+    text-align: center;
+  }
+}
+
+.btnContainer {
+  @include flex-container(flex-end, flex-end, $gap: 16px);
+  width: 100%;
+  margin-top: 48px;
+  button {
+    min-width: 108px;
+  }
+}
+
+.submitBtn {
+  position: relative;
+}

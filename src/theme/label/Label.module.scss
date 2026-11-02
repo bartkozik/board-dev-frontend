@@ -1,0 +1,25 @@
+@use '@/theme/index' as *;
+
+.labelHeader {
+  @include flex-container(flex-start, center);
+  position: relative;
+  @include font(13, $weight: medium);
+  margin-bottom: 5px;
+}
+
+.label {
+  @include flex-container(flex-start, flex-start, column, $gap: 2px);
+  width: 100%;
+  height: fit-content;
+  @include font(13, $weight: medium);
+  color: $color-oxford-blue;
+  margin-bottom: 5px;
+}
+
+.labelWithoutTooltip {
+  margin-bottom: 6px;
+}
+
+.secondaryLabel {
+  @include font(12);
+}

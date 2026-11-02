@@ -1,0 +1,10 @@
+@use '@/theme/index' as *;
+
+.question {
+  @include font(13, $font-w-medium);
+}
+
+.instruction {
+  @include font(13, $font-w-regular);
+  font-style: italic;
+}

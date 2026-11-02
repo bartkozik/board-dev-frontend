@@ -1,0 +1,35 @@
+@use '@/theme/index' as *;
+
+.root {
+  p {
+    font-family: $font-teritiary;
+    font-size: 13px;
+    color: $color-gray-lighter;
+    line-height: 20px;
+  }
+
+  .userMessage {
+    @include font(15);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+}
+
+.matchedInfo {
+  p {
+    @include font(16);
+    font-style: italic;
+
+    &:first-child {
+      margin-bottom: 8px;
+    }
+
+    &:nth-last-child(2) {
+      margin-top: 6px;
+    }
+
+    &:last-child {
+      margin-top: 8px;
+    }
+  }
+}

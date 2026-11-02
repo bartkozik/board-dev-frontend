@@ -1,0 +1,121 @@
+@use '@/theme/index' as *;
+
+@mixin icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.root {
+  position: relative;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  @include font(15);
+  height: 40px;
+  width: 100%;
+  background-color: $color-antiflash-white;
+  padding-right: 16.5px;
+  text-indent: 16.5px;
+  color: $color-oxford-blue;
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  position: relative;
+
+  &::placeholder {
+    color: $color-slate-gray;
+  }
+
+  &:focus {
+    border-color: $color-palatinate-blue;
+  }
+
+  &:disabled {
+    background-color: $color-lavender-gray;
+    cursor: default;
+  }
+
+  &:active,
+  &:focus-visible {
+    outline-color: $color-palatinate-blue;
+  }
+
+  &Error {
+    border-color: $color-error;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-black !important;
+  }
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.searchInput {
+  padding-left: 18px;
+}
+
+.readOnly {
+  cursor: default;
+  color: $color-slate-gray;
+
+  &:focus {
+    border-color: $color-slate-gray;
+  }
+
+  &:active,
+  &:focus-visible {
+    outline-color: $color-slate-gray;
+  }
+}
+
+.icon {
+  @include icon;
+  transform: none;
+  right: 13px;
+}
+
+.maxWidth {
+  width: 100%;
+}
+
+.searchIcon {
+  @include icon;
+  left: 10px;
+}
+
+.resetButton {
+  @include icon;
+  right: 13px;
+}
+
+.error {
+  @include font(13, medium);
+  position: absolute;
+  color: $color-error;
+  top: 100%;
+  left: 0;
+
+  &InTable {
+    display: block;
+    position: static;
+  }
+}
+
+.loader {
+  position: absolute;
+  right: 50px;
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}

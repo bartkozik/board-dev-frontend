@@ -1,0 +1,16 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, flex-start, $gap: 16px);
+  width: 100%;
+
+  @include screen-xs {
+    flex-direction: column;
+  }
+}
+
+.avatar {
+  @include screen-xs {
+    display: none;
+  }
+}

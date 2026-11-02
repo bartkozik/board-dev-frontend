@@ -1,0 +1,15 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(center, center, column, $gap: 2rem);
+  position: relative;
+  height: 100svh;
+  margin: 1rem;
+}
+
+.backButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  margin: 1rem;
+}

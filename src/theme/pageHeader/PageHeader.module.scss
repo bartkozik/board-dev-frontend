@@ -1,0 +1,32 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, center, $gap: 16px);
+  width: fit-content;
+}
+
+.title {
+  color: $color-oxford-blue;
+  @include font(48);
+  font-family: $font-secondary;
+  white-space: nowrap;
+}
+
+.longTitleBreaked {
+  width: 100%;
+  max-width: fit-content;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.small {
+  @include font(22, $font-w-light);
+}
+
+.medium {
+  @include font(32);
+}
+
+.large {
+  @include font(46);
+}

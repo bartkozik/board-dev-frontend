@@ -1,0 +1,85 @@
+@use 'index.scss' as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: inherit;
+}
+
+html {
+  @include vertical-scrollbar;
+  overflow-y: auto;
+}
+
+body {
+  @include typography;
+  @include loader-transition;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-bg;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  opacity: 1;
+}
+
+ul {
+  list-style: none;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+// ---------- Mixins ----------
+.page {
+  @include page;
+}
+
+.container {
+  @include container;
+}
+
+.center {
+  text-align: center;
+}
+
+.card {
+  @include card;
+}
+
+.form {
+  @include flex-container(center, stretch, column, $gap: 40px);
+
+  button {
+    align-self: flex-end;
+  }
+}
+
+.formStep {
+  @include flex-container(flex-start, stretch, column, $gap: 36px);
+  width: 100%;
+  height: 100%;
+  color: $color-oxford-blue;
+}
+
+.modal-form {
+  @include modal-form;
+}
+
+.table {
+  @include table;
+}

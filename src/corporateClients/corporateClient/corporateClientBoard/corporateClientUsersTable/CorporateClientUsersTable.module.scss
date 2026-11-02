@@ -1,0 +1,52 @@
+@use '@/theme/index' as *;
+
+.table {
+  tbody {
+    background-color: $color-brighter-antiflash-white;
+  }
+
+  @include table-cell-width('User', 48%);
+  @include table-cell-width('Status', 18%);
+  @include table-cell-width('Type', 15%);
+  @include table-cell-width('Date added', 15%);
+  @include table-cell-width('Action', 5%);
+
+  @include screen-sm-minus {
+    @include table-cell-width('User', 35%);
+    @include table-cell-width('Status', 20%);
+    @include table-cell-width('Type', 15%);
+    @include table-cell-width('Date added', 18%);
+    @include table-cell-width('Action', 10%);
+
+    tbody,
+    tr {
+      td:first-child {
+        padding: 15px 0 15px 22px;
+      }
+    }
+  }
+
+  @include screen-xs {
+    @include table-cell-width('User', 60%);
+    @include table-cell-width('Type', 30%);
+    @include table-cell-width('Action', 10%);
+    th:not(:nth-child(1)):not(:nth-child(2)):not(:last-child),
+    td:not(:nth-child(1)):not(:nth-child(2)):not(:last-child) {
+      display: none;
+    }
+
+    tbody,
+    tr {
+      td:first-child {
+        padding: 30px 0 30px 22px;
+      }
+    }
+  }
+
+  @include screen-max(548px) {
+    th:not(:nth-child(1)):not(:last-child),
+    td:not(:nth-child(1)):not(:last-child) {
+      display: none;
+    }
+  }
+}

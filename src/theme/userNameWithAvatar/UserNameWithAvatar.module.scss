@@ -1,0 +1,12 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, center);
+  width: 100%;
+
+  span {
+    @include font(16);
+    color: $color-oxford-blue;
+    margin: 0 13.5px 0 16.5px;
+  }
+}

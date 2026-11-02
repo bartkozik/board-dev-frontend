@@ -1,0 +1,48 @@
+$color-primary: #ced4e2;
+$color-secondary: #f1f3f6;
+
+$color-black: #020408;
+$color-gray: #697094;
+$color-gray-alt: #e0e4e9;
+$color-gray-lighter: #282828;
+$color-cadet-gray: #9096a3;
+$color-slate-gray: #6c7589;
+$color-gray-light: #f1f4f9;
+$color-orange: #ff7700;
+$color-white: #ffffff;
+$color-antiflash-white: #f1f3f6;
+$color-brighter-antiflash-white: #fafafb;
+$color-palatinate-blue: #0030ff;
+$color-palatinate-blue-light: rgba(0, 48, 255, 0.75);
+$color-palatinate-blue-lighter: rgba(0, 48, 255, 0.1);
+$color-oxford-blue: #101e32;
+$color-lavender-gray: #ced4e2;
+$color-lavender-gray-dark: #a5aab5;
+$color-lavender-gray-13: rgba(206, 212, 226, 0.13);
+$color-red: #ff5e71;
+$color-red-opacity: rgba($color-red, 0.15);
+
+$color-background-gradient: linear-gradient(to bottom, rgba(206, 212, 226, 0.55) 0%, rgba(206, 212, 226, 0) 100%)
+    no-repeat,
+  $color-antiflash-white;
+
+$color-summary-wrapper-background: linear-gradient(180deg, rgba(206, 212, 226, 0.16), transparent);
+
+$color-border: $color-lavender-gray;
+$color-text: $color-oxford-blue;
+$color-text-alt: $color-slate-gray;
+
+$color-bg: $color-antiflash-white;
+
+$color-error: #ff5e71;
+$color-success: #00c187;
+$color-success-alt: #44af69;
+$color-success-dark: rgb(0, 187, 136, 0.6);
+
+$box-shadow: 0 2px 25px 0 rgba(58, 82, 129, 0.21);
+$snackbar-shadow: 3px 5px 23px 0 rgba(6, 64, 92, 0.13);
+$tooltip-menu-box-shadow: 3px 5px 23px 0 rgba(6, 64, 92, 0.13);
+
+$card-box-shadow: 0px 0px 23px 0px rgba(6, 64, 92, 0.13);
+$card-box-shadow-scroll: 0 2px 5px rgba(0, 0, 0, 0.1);
+$color-card-section-gradient: linear-gradient(180deg, rgba(206, 212, 226, 0.16) 0%, rgba(206, 212, 226, 0) 100%);

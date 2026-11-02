@@ -1,0 +1,23 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, center, $gap: 16px);
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.selectedFilters {
+  @include flex-container(flex-start, center, $gap: 8px);
+  width: fit-content;
+  max-width: 80%;
+  flex-wrap: wrap;
+}
+
+.clearFiltersButton {
+  @include font(15, 600);
+  color: $color-palatinate-blue;
+}
+
+.selectedFilterChip {
+  min-width: 80px;
+}

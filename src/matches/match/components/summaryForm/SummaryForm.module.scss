@@ -1,0 +1,6 @@
+@use '@/theme/index' as *;
+
+.root {
+  width: 100%;
+  @include flex-container(flex-start, flex-start, column, $gap: 20px);
+}

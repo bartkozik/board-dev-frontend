@@ -1,0 +1,54 @@
+@use '@/theme/index' as *;
+
+.table {
+  tbody {
+    background-color: $color-brighter-antiflash-white;
+  }
+
+  @include table-cell-width('Name', 30%);
+  @include table-cell-width('Company', 20%);
+  @include table-cell-width('Location', 20%);
+  @include table-cell-width('Meetings', 15%);
+  @include table-cell-width('Date added', 10%);
+  @include table-cell-width('Action', 3%);
+
+  @include screen-max(1180px) {
+    @include table-cell-width('Name', 20%);
+    @include table-cell-width('Company', 17%);
+  }
+
+  @include screen-sm-minus {
+    @include table-cell-width('Name', 20%);
+    @include table-cell-width('Company', 15%);
+    @include table-cell-width('Location', 15%);
+    @include table-cell-width('Meetings', 15%);
+    @include table-cell-width('Action', 10%);
+    tbody,
+    tr {
+      td:first-child {
+        padding: 15px 0 15px 22px;
+      }
+    }
+  }
+
+  @include screen-xs {
+    @include table-cell-width('Name', 60%);
+    @include table-cell-width('Action', 10%);
+
+    tbody,
+    tr {
+      td:first-child {
+        padding: 30px 0 30px 22px;
+      }
+    }
+  }
+}
+
+.loader {
+  width: 100%;
+  @include flex-center;
+}
+
+.selectAll {
+  width: 54px;
+}

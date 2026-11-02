@@ -1,0 +1,24 @@
+@use '@/theme/index' as *;
+
+.clickableRow {
+  cursor: pointer;
+}
+
+.forcedRowHeight {
+  height: auto !important;
+  height: var(--forced-height, auto) !important;
+}
+
+.spacer {
+  tr {
+    height: 8px;
+    background-color: $color-white;
+    padding: 0;
+    border: none;
+  }
+}
+
+.noItems {
+  background-color: $color-white;
+  height: 50px;
+}

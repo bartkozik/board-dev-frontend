@@ -1,0 +1,17 @@
+@use '@/theme/index' as *;
+
+.wrapper {
+  @include flex-container(flex-start, flex-start, column, $gap: 20px);
+}
+
+.shortSummary {
+  textarea {
+    height: 165px;
+  }
+}
+
+.longSummary {
+  textarea {
+    height: 473px;
+  }
+}

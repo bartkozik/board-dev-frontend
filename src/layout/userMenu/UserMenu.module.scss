@@ -1,0 +1,23 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-end, center);
+  position: absolute;
+  top: 13.5px;
+  right: 45px;
+  z-index: 4;
+}
+
+.dropdownMenu {
+  top: 50px;
+}
+
+.avatar {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: $color-slate-gray;
+  }
+}

@@ -1,0 +1,6 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include font(22);
+  font-family: $font-secondary;
+}

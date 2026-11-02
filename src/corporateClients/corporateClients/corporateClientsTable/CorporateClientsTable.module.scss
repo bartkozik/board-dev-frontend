@@ -1,0 +1,33 @@
+@use '@/theme/index' as *;
+
+.table {
+  tbody {
+    background-color: $color-brighter-antiflash-white;
+  }
+
+  tr td[data-label='Members'] {
+    text-align: end;
+    padding-right: 121px;
+  }
+
+  tr th[data-th='Members'] {
+    @include flex-container(flex-end, center);
+    width: 100%;
+    padding-right: 121px;
+  }
+
+  @include table-cell-width('Company name', 60%);
+  @include table-cell-width('Members', 25%);
+  @include table-cell-width('Date added', 12%);
+  @include table-cell-width('Action', 3%);
+
+  @include screen-xs {
+    @include table-cell-width('Company name', 60%);
+    @include table-cell-width('Members', 30%);
+    @include table-cell-width('Action', 10%);
+    th:not(:nth-child(1)):not(:nth-child(2)):not(:last-child),
+    td:not(:nth-child(1)):not(:nth-child(2)):not(:last-child) {
+      display: none;
+    }
+  }
+}

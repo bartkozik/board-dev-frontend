@@ -1,0 +1,64 @@
+@use '@/theme/index' as *;
+
+@mixin first-and-last-radius {
+  &:last-child {
+    border-radius: 0 16px 16px 0;
+  }
+
+  &:first-child {
+    border-radius: 16px 0 0 16px;
+  }
+}
+
+.root {
+  @include flex-container(space-between, center);
+  width: 672px;
+  @include font(15);
+  color: $color-oxford-blue;
+
+  span {
+    @include font(15);
+    &.isSmaller {
+      width: 98px;
+    }
+  }
+}
+
+.scale {
+  @include flex-container(flex-start, center);
+  border: 1px solid $color-lavender-gray;
+  border-radius: 16px;
+  width: 402px;
+  height: fit-content;
+  margin: 0 21px 0 14px;
+
+  .selected {
+    @include first-and-last-radius;
+  }
+}
+
+.ratingItem {
+  font-weight: $font-w-bold;
+  @include flex-center;
+  padding: 10px;
+  cursor: pointer;
+  width: 80px;
+  height: 40px;
+  transition: background-color 0.1s;
+  border-right: 1px solid $color-lavender-gray;
+
+  &:hover {
+    background-color: $color-palatinate-blue-light;
+    color: $color-white;
+    @include first-and-last-radius;
+  }
+
+  &:last-child {
+    border-right: transparent;
+  }
+}
+
+.selected {
+  background-color: $color-palatinate-blue;
+  color: $color-white;
+}

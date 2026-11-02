@@ -1,0 +1,69 @@
+@use '@/theme/index' as *;
+
+.root {
+  &.selected {
+    background-color: $color-palatinate-blue-lighter;
+  }
+}
+
+.userDetails {
+  @include flex-container(flex-start, center, $gap: 15.5px);
+  width: 100%;
+
+  @include screen-max(1180px) {
+    @include flex-container(flex-start, flex-start, column, $gap: 15px);
+    margin: 10px 0;
+    span {
+      @include font(14);
+    }
+  }
+
+  @include screen-xs {
+    gap: 10px;
+  }
+}
+
+.username {
+  @include flex-container(flex-start, center);
+  @include font(16);
+  min-width: fit-content;
+  width: 160px;
+  color: $color-oxford-blue;
+  @include shorten-long-string;
+
+  @include screen-sm-minus {
+    @include font(14);
+    margin: 5px 0;
+  }
+
+  @include screen-xs {
+    margin: 0;
+    max-width: 150px;
+  }
+}
+
+.matchButton {
+  @include flex-container(center, center);
+  @include font(14, $font-w-semibold);
+  width: 132px;
+  color: $color-palatinate-blue;
+
+  svg path {
+    fill: $color-palatinate-blue;
+  }
+}
+
+.action {
+  @include flex-container(flex-end, center);
+  width: 100%;
+  padding-right: 16px;
+}
+
+.defaultCell {
+  @include font(14);
+  color: $color-oxford-blue;
+  max-width: 200px;
+  @include shorten-long-string;
+  overflow-wrap: break-word;
+  white-space: normal;
+}

@@ -1,0 +1,28 @@
+@use '@/theme/index' as *;
+
+.root {
+  position: relative;
+  min-height: 100px;
+  width: 100%;
+}
+
+.loadingArea {
+  @include flex-center;
+  flex: 1;
+  min-height: inherit;
+}
+
+.loader {
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text {
+  @include font(15);
+  color: $color-slate-gray;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-48%);
+}

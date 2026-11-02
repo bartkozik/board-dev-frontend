@@ -1,0 +1,69 @@
+@use 'common-colors' as colors;
+
+@mixin scrollbar($thumb-color, $track-color, $border-width, $background-color) {
+  cursor: auto;
+  scrollbar-color: $thumb-color $track-color;
+  scrollbar-gutter: always;
+
+  &::-webkit-scrollbar {
+    background-color: $track-color;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $track-color;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: 18px;
+    border: $border-width $background-color solid;
+  }
+  &:-moz-scrollbar-thumb {
+    border-radius: 18px;
+    border: $border-width $background-color solid;
+  }
+}
+
+@mixin vertical-scrollbar(
+  $background-color: colors.$color-antiflash-white,
+  $width: 8px,
+  $border-width: 2px,
+  $thumb-color: colors.$color-lavender-gray-dark,
+  $track-color: transparent
+) {
+  @include scrollbar($thumb-color, $track-color, $border-width, $background-color);
+  overflow-y: auto !important;
+  z-index: 0;
+  scrollbar-width: thin !important;
+
+  &::-webkit-scrollbar {
+    width: $width !important;
+  }
+
+  &::-webkit-scrollbar-track {
+    position: relative;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    border: 5px solid $track-color !important;
+    margin-right: 10px !important;
+  }
+}
+
+@mixin horizontal-scrollbar(
+  $background-color: colors.$color-white,
+  $height: 20px,
+  $border-width: 7px,
+  $thumb-color: colors.$color-gray-border,
+  $track-color: colors.$color-white
+) {
+  @include scrollbar($thumb-color, $track-color, $border-width, $background-color);
+  overflow-x: auto;
+  scrollbar-height: thin;
+  &::-webkit-scrollbar {
+    height: $height;
+  }
+  &::-webkit-scrollbar-track {
+    border-bottom: $border-width $background-color solid;
+    border-top: $border-width $background-color solid;
+  }
+}

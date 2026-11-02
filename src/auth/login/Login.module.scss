@@ -1,0 +1,48 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(center, center, column);
+  height: 100vh;
+  background: $color-bg;
+
+  .linkButton {
+    color: $color-oxford-blue;
+    @include font(13);
+  }
+}
+
+.card {
+  @include flex-container($flex-flow: column, $justify-content: space-between);
+  @include card;
+  width: 443px;
+  height: 281px;
+  margin: 32px 0 32px 24px;
+}
+
+.form {
+  @include flex-container($flex-flow: column, $gap: 20px);
+}
+
+.messageContainer {
+  @include flex-container($flex-flow: column, $justify-content: space-between);
+  height: 100%;
+}
+
+.message {
+  @include font(16, $height: 24px);
+  @include flex-container($flex-flow: column, $gap: 20px);
+  width: 364px;
+  color: $color-oxford-blue;
+}
+
+.error {
+  margin-top: 24px;
+}
+
+.email {
+  @include font(16, $weight: $font-w-semibold);
+}
+
+.loader {
+  align-self: center;
+}

@@ -1,0 +1,14 @@
+@use '@/theme/index' as *;
+
+.supportButton {
+  justify-content: flex-start;
+  color: $color-palatinate-blue;
+}
+
+.support {
+  @include font(13);
+
+  .linkButton {
+    justify-content: flex-end;
+  }
+}

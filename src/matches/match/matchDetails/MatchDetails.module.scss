@@ -1,0 +1,9 @@
+@use '@/theme/index' as *;
+
+.users {
+  @include flex-container(flex-start, flex-start, row wrap, $gap: 32px);
+}
+
+.detailsLayout {
+  margin-top: 48px;
+}

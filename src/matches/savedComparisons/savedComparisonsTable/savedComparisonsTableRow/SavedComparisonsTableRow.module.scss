@@ -1,0 +1,13 @@
+@use '@/theme/index' as *;
+
+.techLeaderContainer {
+  @include flex-container(space-between, center);
+  width: 100%;
+  padding-right: 13px;
+}
+
+.dateContainer {
+  @include flex-container(flex-start, center);
+  width: 100%;
+  padding-right: 16px;
+}

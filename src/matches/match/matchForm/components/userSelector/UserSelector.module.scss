@@ -1,0 +1,49 @@
+@use '@/theme/index' as *;
+
+.root {
+  padding-top: 12px;
+  .input {
+    width: 345px;
+    position: relative;
+
+    input:active:not(:disabled),
+    input:focus:not(:disabled) {
+      background-color: $color-white;
+    }
+  }
+
+  .list {
+    position: absolute;
+    margin-top: 10px;
+    background-color: $color-white;
+    width: 345px;
+    box-shadow: 2px 4px 18px rgba(6, 64, 92, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 1;
+
+    li {
+      @include font(15);
+      line-height: 32px;
+      padding: 0 16px;
+
+      &:first-child {
+        padding-top: 5px;
+      }
+
+      &:last-child {
+        padding-bottom: 5px;
+      }
+
+      &:hover {
+        background-color: $color-palatinate-blue-lighter;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .loader {
+    min-height: 42px;
+    @include flex-center;
+  }
+}

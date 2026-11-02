@@ -1,0 +1,40 @@
+@use '@/theme/index' as *;
+
+.root {
+  border-radius: 24px;
+  min-height: fit-content;
+
+  @include screen-xs {
+    padding: 12.37px 12px;
+  }
+
+  .table {
+    tbody {
+      background-color: $color-lavender-gray-13;
+      border-radius: 24px;
+      margin: 24.75px 24px;
+    }
+    tr {
+      height: 56px;
+      max-width: 300px;
+    }
+
+    tr td {
+      color: $color-oxford-blue;
+    }
+
+    tr td[data-label='Label'] {
+      width: 21%;
+      @include font(13, $font-w-medium);
+    }
+
+    tr td[data-label='Value'] {
+      width: 79%;
+      @include font(15);
+    }
+  }
+}
+
+.isContentLoaded {
+  background-color: $color-white;
+}

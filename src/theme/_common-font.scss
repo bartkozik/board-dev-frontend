@@ -1,0 +1,121 @@
+@use 'sass:map';
+
+@font-face {
+  font-family: 'Manrope 200';
+  src: url('./assets/fonts/Manrope-ExtraLight.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope 300';
+  src: url('./assets/fonts/Manrope-Light.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope 400';
+  src: url('./assets/fonts/Manrope-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope 500';
+  src: url('./assets/fonts/Manrope-Medium.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope 600';
+  src: url('./assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope 700';
+  src: url('./assets/fonts/Manrope-Bold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope 800';
+  src: url('./assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('./assets/fonts/Raleway-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+$font-family-primary: 'Manrope', sans-serif;
+
+$font-primary: 'Manrope 400', sans-serif;
+$font-secondary: 'Manrope 200', sans-serif;
+$font-teritiary: 'Raleway', sans-serif;
+
+$fonts: (
+  '': 16px,
+  '8': 8px,
+  '10': 10px,
+  '11': 11px,
+  '12': 12px,
+  '13': 13px,
+  '14': 14px,
+  '15': 15px,
+  '16': 16px,
+  '17': 17px,
+  '18': 18px,
+  '19': 19px,
+  '20': 20px,
+  '21': 21px,
+  '22': 22px,
+  '23': 23px,
+  '24': 24px,
+  '26': 26px,
+  '28': 28px,
+  '30': 30px,
+  '32': 32px,
+  '36': 36px,
+  '40': 40px,
+  '44': 44px,
+  '45': 45px,
+  '46': 46.84px,
+  '71': 71.4px,
+  '73': 73px,
+);
+
+$font-w-light: 300;
+$font-w-regular: 400;
+$font-w-medium: 500;
+$font-w-semibold: 600;
+$font-w-bold: 700;
+
+@mixin font($font, $weight: $font-w-regular, $height: normal) {
+  font-size: map.get($fonts, '#{$font}');
+  line-height: $height;
+
+  @if $weight == bold {
+    font-weight: $font-w-bold;
+  } @else if $weight == semibold {
+    font-weight: $font-w-semibold;
+  } @else if $weight == medium {
+    font-weight: $font-w-medium;
+  } @else if $weight == regular {
+    font-weight: $font-w-regular;
+  } @else if $weight == light {
+    font-weight: $font-w-light;
+  } @else {
+    font-weight: $weight;
+  }
+}
+
+@mixin typography {
+  * {
+    font-family: $font-family-primary;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,51 @@
+@use '@/theme/index' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color-gray-light, 0.49);
+  z-index: 9;
+  overflow: auto;
+  animation: displayModal 150ms ease-in;
+}
+
+.modal {
+  background: $color-white;
+  margin: 60px auto;
+  outline: none;
+  padding: 45px 40px;
+  width: 90%;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: $box-shadow;
+
+  @include screen-min($screen-lg-min) {
+    width: 600px;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.closeBtn {
+  @include flex-center;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+@keyframes displayModal {
+  0% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

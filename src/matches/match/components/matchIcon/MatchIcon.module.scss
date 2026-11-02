@@ -1,0 +1,6 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, center);
+  min-height: 52px;
+}

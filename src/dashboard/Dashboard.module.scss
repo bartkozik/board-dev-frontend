@@ -1,0 +1,5 @@
+@use '@/theme/index' as *;
+
+.container {
+  @include flex-container($flex-flow: column, $gap: 25px);
+}

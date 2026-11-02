@@ -1,0 +1,38 @@
+@use '@/theme/index' as *;
+
+$gradient-height: 287px;
+
+.root {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+  min-height: 100vh;
+  background: $color-background-gradient;
+  background-size: 100% $gradient-height, cover;
+}
+
+.navbar {
+  @include flex-container(space-between, center);
+  height: 70.5px;
+  padding: 27px 45px 22.5px 45px;
+  width: 100%;
+  border-bottom: 1px solid $color-lavender-gray;
+  box-shadow: 0 1px 1.5px rgba($color-lavender-gray, 0.5);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 205px;
+    height: 70px;
+    width: 1px;
+    background-color: $color-lavender-gray;
+  }
+}
+
+.main {
+  position: relative;
+  flex: 1;
+  padding: 36px 45px 20px 45px;
+  width: 100%;
+  overflow-x: auto;
+}

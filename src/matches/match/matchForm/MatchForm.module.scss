@@ -1,0 +1,24 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+}
+.selectors {
+  @include flex-container(flex-start, flex-start, row wrap, $gap: 32px);
+}
+
+.header {
+  @include flex-container(flex-start, flex-start, $gap: 72px);
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.selectedUser {
+  @include flex-container(flex-start, flex-end, $flex-flow: row wrap, $gap: 24px);
+  width: 100%;
+  :not(:first-child) > div,
+  a {
+    margin-bottom: 13px;
+  }
+}

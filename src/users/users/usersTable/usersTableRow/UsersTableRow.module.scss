@@ -1,0 +1,71 @@
+@use '@/theme/index' as *;
+
+.userDetails {
+  @include flex-container(flex-start, center, $gap: 15.5px);
+  width: 100%;
+
+  @include screen-max(1180px) {
+    @include flex-container(flex-start, flex-start, column, $gap: 15px);
+    margin: 10px 0;
+    span {
+      @include font(14);
+    }
+  }
+
+  @include screen-xs {
+    gap: 10px;
+  }
+}
+
+.username {
+  @include flex-container(flex-start, center);
+  @include font(16);
+  min-width: fit-content;
+  width: 160px;
+  color: $color-oxford-blue;
+  @include shorten-long-string;
+
+  @include screen-sm-minus {
+    @include font(14);
+    margin: 5px 0;
+  }
+
+  @include screen-xs {
+    margin: 0;
+    max-width: 150px;
+  }
+}
+
+.createdAtMobile {
+  @include flex-container(flex-start, flex-start, column, $gap: 5px);
+  @include font(12);
+  margin-top: 4px;
+  span {
+    @include font(12);
+  }
+
+  @include screen-sm-plus {
+    display: none;
+  }
+}
+
+.formUpdateAtMobile {
+  @include flex-container(flex-start, flex-start, column, $gap: 5px);
+  margin-top: 5px;
+}
+
+.tooltipContainer {
+  position: relative;
+  @include flex-container;
+  width: 100%;
+}
+
+.tooltipMenu {
+  position: absolute;
+  top: 18px;
+  right: 0;
+}
+
+.tooltipButton {
+  @include flex-container(flex-start, center);
+}

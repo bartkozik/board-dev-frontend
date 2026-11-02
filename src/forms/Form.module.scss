@@ -1,0 +1,82 @@
+@use '@/theme/index' as *;
+
+$padding-side: 24px;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 16px);
+  max-width: 1360px;
+  min-width: 1222px;
+  width: 100%;
+}
+
+.form {
+  background: $color-white;
+  @include flex-container(flex-start, flex-start, column);
+  height: fit-content;
+  border-radius: 24px;
+  padding: 35px $padding-side 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.content {
+  @include flex-container(flex-start, flex-start);
+  width: 100%;
+  min-height: fit-content;
+  padding: 64px 0 40px;
+}
+
+.leftSideContent {
+  @include flex-container(flex-start, flex-start, column, $gap: 16.5px);
+  padding-left: 90px;
+  width: 32%;
+
+  .title {
+    @include font(32);
+    font-family: $font-secondary;
+  }
+
+  .subtitle {
+    @include font(16, $font-w-regular);
+    font-family: $font-primary;
+  }
+}
+
+.rightSideContent {
+  @include flex-container(flex-start, flex-start, column, $gap: 16.5px);
+  width: 68%;
+  padding-left: 131px;
+  padding-right: 115px;
+}
+
+.footer {
+  background-color: $color-lavender-gray-13;
+  margin-left: calc(0px - $padding-side);
+  min-height: 120px;
+  width: calc(100% + 2 * $padding-side);
+  @include flex-container(flex-end, center, row wrap, $gap: 16.5px);
+  padding: 40px 32px 40px;
+}
+
+.warning {
+  @include font(13);
+  max-width: 228px;
+}
+
+.submit {
+  min-width: 110px;
+}
+
+.submit[disabled],
+.submit[disabled]:hover {
+  background-color: $color-cadet-gray;
+  border-color: $color-cadet-gray;
+}
+
+.tooltip {
+  @include font(12);
+  background-color: $color-oxford-blue;
+  font-family: $font-primary;
+  padding: 4px 8px 8px 6px;
+  text-align: right;
+}

@@ -1,0 +1,11 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(center, flex-end, column, $gap: 8px);
+  align-self: flex-end;
+  width: 100%;
+  p {
+    @include font(22);
+    font-family: $font-secondary;
+  }
+}

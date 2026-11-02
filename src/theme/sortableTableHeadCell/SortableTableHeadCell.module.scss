@@ -1,0 +1,39 @@
+@use '@/theme/index' as *;
+
+.root {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.header {
+  @include flex-container(space-between, center);
+  position: relative;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.icon {
+  margin-top: 4px;
+}
+
+.triangleContainer {
+  @include flex-container(space-between, center, column);
+  width: 16px;
+  height: 15px;
+  flex-shrink: 0;
+  overflow: visible;
+  margin-left: 7px;
+}
+
+.triangle {
+  width: 10px;
+  height: 24px;
+
+  svg {
+    transform: scale(1.5);
+  }
+}
+
+.flipped {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,72 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 3px);
+  width: 100%;
+  position: relative;
+}
+
+.editorWrapper {
+  width: 100%;
+  @include markdown;
+
+  :global {
+    .toastui-editor-toolbar {
+      display: none !important;
+    }
+
+    .toastui-editor-md-container .toastui-editor-ww-container {
+      display: none !important;
+    }
+
+    .toastui-editor-ww-mode {
+      border: none;
+    }
+
+    .toastui-editor-contents {
+      padding: 0;
+      margin: 0;
+    }
+
+    .toastui-editor-defaultUI {
+      border: none !important;
+      background: $color-summary-wrapper-background;
+    }
+
+    .toastui-editor-defaultUI .toastui-editor {
+      background: $color-summary-wrapper-background;
+    }
+
+    .toastui-editor-contents {
+      border: 1px solid $color-border;
+      border-radius: 16px;
+      padding: 9px 16px;
+      background-color: $color-antiflash-white;
+      @include font(15);
+      color: $color-oxford-blue;
+      line-height: 21px;
+      min-height: 96px;
+      white-space: pre-line;
+
+      @include vertical-scrollbar($width: 4px);
+
+      &:focus-within {
+        border: 1px solid $color-palatinate-blue;
+        background-color: $color-white;
+      }
+
+      &.toastui-editor-disabled {
+        background-color: $color-lavender-gray;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.error {
+  @include font(13, medium);
+  position: absolute;
+  color: $color-error;
+  top: 100%;
+  left: 0;
+}

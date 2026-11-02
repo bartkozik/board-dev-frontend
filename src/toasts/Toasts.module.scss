@@ -1,0 +1,8 @@
+@use '@/theme/index' as *;
+
+.root {
+  position: fixed;
+  bottom: 31px;
+  right: 17px;
+  z-index: 9999;
+}

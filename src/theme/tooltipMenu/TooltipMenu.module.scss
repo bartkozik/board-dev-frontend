@@ -1,0 +1,13 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 2px);
+  min-width: 167px;
+  height: fit-content;
+  padding: 8px 25px 8px 15px;
+  box-shadow: $tooltip-menu-box-shadow;
+  border-radius: 18px;
+  background-color: $color-white;
+  z-index: 10;
+  cursor: default;
+}

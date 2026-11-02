@@ -1,0 +1,20 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, center, $gap: 20px);
+  width: 74%;
+  margin-bottom: 17px;
+
+  @include screen-sm-minus {
+    width: 100%;
+  }
+}
+
+.checkbox {
+  margin-top: 22px;
+}
+
+.checkboxLabel {
+  width: 100%;
+  white-space: nowrap;
+}

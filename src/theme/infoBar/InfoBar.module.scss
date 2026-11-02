@@ -1,0 +1,21 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, center);
+  width: 100%;
+  height: 24px;
+  padding: 3px 16px;
+  margin-bottom: 16px;
+  @include font(13, $font-w-medium);
+  border-radius: 8px;
+}
+
+.warning {
+  background-color: $color-red-opacity;
+  color: $color-oxford-blue;
+}
+
+.info {
+  background-color: $color-success-dark;
+  color: $color-white;
+}

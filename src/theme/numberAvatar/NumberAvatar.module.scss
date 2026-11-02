@@ -1,0 +1,31 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  background-color: $color-gray-lighter;
+  @include font(14);
+  color: $color-white;
+  cursor: default;
+
+  svg path {
+    fill: $color-white;
+  }
+}
+
+.tooltip {
+  @include font(12);
+  background-color: $color-gray-lighter;
+  font-family: $font-primary;
+  padding: 4px 8px 8px 6px;
+  text-align: left;
+}
+
+.tooltipList {
+  @include flex-container(flex-start, flex-start, column, $gap: 8px);
+  width: 100%;
+}

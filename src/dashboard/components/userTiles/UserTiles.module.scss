@@ -1,0 +1,20 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container($gap: 16px, $flex-flow: row wrap);
+  .externalHref {
+    color: $color-white;
+    height: 40px;
+    @include font(15, semibold);
+  }
+}
+
+.filled {
+  @include flex-container($align-items: center, $gap: 8px);
+  color: $color-success;
+  @include font(15, semibold);
+}
+
+.supportInfo {
+  @include flex-container(flex-start, center, $gap: 4px);
+}

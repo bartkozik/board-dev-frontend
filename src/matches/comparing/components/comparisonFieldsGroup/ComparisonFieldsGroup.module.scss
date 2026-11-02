@@ -1,0 +1,51 @@
+@use '@/theme/index' as *;
+
+.alignmentBar {
+  margin-top: 5px;
+}
+
+.alignmentBarWithSubsections {
+  margin-bottom: 8px;
+}
+
+.subsectionAlignmentBar {
+  background-color: $color-brighter-antiflash-white;
+  margin: 10px 0 8px 0;
+  color: $color-gray;
+  font-size: 12px;
+}
+
+.subSectionDetails {
+  padding: 0;
+}
+
+.table {
+  tbody {
+    background-color: transparent;
+  }
+
+  tr {
+    max-width: 300px;
+  }
+
+  tr td {
+    color: $color-oxford-blue;
+    vertical-align: top;
+
+    &[data-label='Label'] {
+      padding: 19px 20px 19px 19px !important;
+      @include brake-long-string(100px);
+      @include font(13, $font-w-medium);
+    }
+
+    &[data-label='Value'] {
+      padding: 19px 50px 19px 100px !important;
+      @include brake-long-string(250px);
+      @include font(14);
+    }
+  }
+}
+
+.withoutFieldLabel tr td[data-label='Value'] {
+  padding: 19px 50px 19px 16px !important;
+}

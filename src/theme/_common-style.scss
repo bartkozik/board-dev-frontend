@@ -1,0 +1,135 @@
+@use 'common-colors' as color;
+@use 'common-flex' as flex;
+@use 'common-font' as font;
+@use 'common-responsive' as responsive;
+@use 'common-scrollbar' as scrollbar;
+@use 'common-table' as table;
+
+@mixin page {
+  height: 100%;
+  position: relative;
+}
+
+@mixin card($padding: 24px, $border-radius: 24px) {
+  padding: $padding;
+  background-color: color.$color-white;
+  border-radius: $border-radius;
+}
+
+@mixin container {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @include responsive.screen-xs {
+    max-width: 90%;
+  }
+}
+
+@mixin modal-form {
+  > div:last-child {
+    @include flex.flex-container($justify-content: flex-end, $gap: 10px);
+    margin-top: 20px;
+  }
+}
+
+@mixin loader-transition {
+  .loader-transition {
+    opacity: 0;
+  }
+
+  .loader-transition-enter {
+    opacity: 0;
+  }
+
+  .loader-transition-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
+
+  .loader-transition-exit {
+    opacity: 1;
+  }
+
+  .loader-transition-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+}
+
+@mixin training-materials-card {
+  .title {
+    margin-bottom: 34px;
+  }
+
+  .trainingMaterialsContainer {
+    @include flex.flex-container(flex-start, flex-start, column, $gap: 24px);
+    width: 60%;
+    padding-bottom: 60px;
+
+    span {
+      @include font.font(13);
+    }
+  }
+}
+
+@mixin shorten-long-string {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+@mixin brake-long-string($width: 200px) {
+  max-width: $width;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+@mixin markdown {
+  h1 {
+    margin: 1rem 0 1rem;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  h2 {
+    margin: 1rem 0 1rem;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1rem 0 0.5rem;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  p,
+  ul,
+  ol {
+    margin-bottom: 1rem;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  strong {
+    font-style: italic;
+    font-weight: bold;
+  }
+}

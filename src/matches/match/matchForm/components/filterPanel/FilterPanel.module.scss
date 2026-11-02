@@ -1,0 +1,37 @@
+@use '@/theme/index' as *;
+
+.filtersList {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+}
+
+.section {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+  border-bottom: solid 1px $color-lavender-gray;
+  padding: 24px 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    @include font(13, $weight: 500);
+    margin-bottom: 16px;
+  }
+}
+
+.reset {
+  align-self: flex-end;
+  color: $color-palatinate-blue;
+  @include font(15, $weight: 600, $height: 30px);
+
+  &:hover {
+    cursor: pointer;
+    color: $color-palatinate-blue-lighter;
+  }
+}

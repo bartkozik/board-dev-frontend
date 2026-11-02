@@ -1,0 +1,37 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 4px);
+}
+
+.user {
+  @include flex-container(flex-start, center, $gap: 16px);
+}
+
+.name {
+  @include font(46);
+  font-family: $font-secondary;
+  min-width: 282px;
+}
+
+.icon {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  background-color: $color-white;
+  overflow: hidden;
+  color: $color-slate-gray;
+
+  &:hover {
+    background-color: $color-palatinate-blue-lighter;
+    border-radius: 50%;
+  }
+}
+
+.button svg path {
+  fill: $color-palatinate-blue;
+}
+
+.row {
+  @include flex-container(flex-start, center, $gap: 16px);
+}

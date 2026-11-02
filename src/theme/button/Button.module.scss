@@ -1,0 +1,109 @@
+@use '@/theme/index' as *;
+@use 'sass:color';
+
+@mixin btn-hover($color) {
+  &:hover:not(:disabled) {
+    background-color: color.adjust($color, $lightness: -15%);
+  }
+}
+
+.root {
+  @include font(15, $font-w-semibold);
+  @include flex-container(center, center, row, true);
+  position: relative;
+  border: none;
+  border-radius: 16px;
+  outline: none;
+  white-space: nowrap;
+  padding: 10px 24px;
+  color: $color-white;
+  height: 40px;
+  min-width: fit-content;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  svg {
+    margin-right: 7.5px;
+  }
+
+  &.externalHref:not(.primary) {
+    color: $color-palatinate-blue;
+    font: inherit;
+    height: auto;
+  }
+
+  &.maxWidth {
+    width: 100%;
+  }
+}
+
+.withIcon {
+  padding: 10px 24px 10px 18px;
+}
+
+.primary {
+  @include btn-hover($color-palatinate-blue);
+  color: $color-white;
+  background-color: $color-palatinate-blue;
+  border: 1px solid $color-palatinate-blue;
+
+  svg path {
+    fill: $color-white;
+  }
+}
+
+.secondary {
+  @include btn-hover($color-white);
+  color: $color-oxford-blue;
+  background-color: $color-white;
+  border: 1px solid $color-lavender-gray;
+}
+
+.outlined {
+  @include font(15, $font-w-semibold);
+  color: $color-oxford-blue;
+  background-color: $color-white;
+  padding: 0;
+
+  &:hover {
+    color: $color-slate-gray;
+
+    svg path {
+      fill: $color-slate-gray;
+    }
+  }
+
+  svg path {
+    fill: $color-oxford-blue;
+  }
+}
+
+.text {
+  @include font(13);
+  background-color: transparent;
+  border: none;
+  color: $color-oxford-blue;
+  padding: 0;
+  height: auto;
+  width: auto;
+
+  svg path {
+    fill: $color-slate-gray;
+  }
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+    background-color: transparent;
+    color: $color-palatinate-blue;
+  }
+}
+
+.loader {
+  top: 50%;
+  transform: translateY(-50%);
+}

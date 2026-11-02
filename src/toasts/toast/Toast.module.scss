@@ -1,0 +1,79 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, center);
+  padding: 23.5px 25px;
+  min-width: 498px;
+  height: 91px;
+  color: $color-white;
+  position: relative;
+
+  & ~ & {
+    margin-top: 12px;
+  }
+}
+
+.closeIcon {
+  position: absolute;
+  top: 17px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.icon {
+  @include flex-container(center, center);
+  width: 44px;
+  height: 44px;
+  background-color: $color-white;
+  border-radius: 50%;
+
+  &-success {
+    padding-left: 5px;
+    padding-top: 4px;
+
+    svg path:nth-child(2) {
+      fill: $color-success;
+    }
+  }
+
+  &-error svg path {
+    fill: $color-error;
+  }
+
+  &-warning svg path {
+    fill: $color-orange;
+  }
+}
+
+.label {
+  @include font(12);
+  letter-spacing: 0.6;
+  display: block;
+  text-transform: uppercase;
+}
+
+.success {
+  background-color: $color-success-alt;
+}
+
+.error {
+  background-color: $color-error;
+}
+
+.warning {
+  background-color: $color-orange;
+}
+
+.text-success,
+.text-error,
+.text-warning {
+  color: $color-white;
+}
+
+.textContainer {
+  margin-left: 23px;
+}
+
+.childrenContainer {
+  @include font(22, bold);
+}

@@ -1,0 +1,28 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-end, center, $gap: 16px);
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  width: 80%;
+  max-width: 440px;
+
+  @include screen-xs {
+    width: 100%;
+  }
+}
+
+.maxWidthInput {
+  @include screen-sm-minus {
+    max-width: 100%;
+  }
+}
+
+.withoutButtonInMobileView {
+  @include screen-xs {
+    display: none;
+  }
+}

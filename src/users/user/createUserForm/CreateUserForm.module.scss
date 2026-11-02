@@ -1,0 +1,28 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container;
+  width: 100%;
+}
+
+.form {
+  @include flex-container(flex-start, flex-start, column, $gap: 20px);
+  width: 100%;
+}
+
+.actions {
+  width: 100%;
+  justify-self: flex-end;
+  margin-top: 5px;
+
+  button {
+    min-width: 114px;
+  }
+}
+
+.companySelect {
+  input {
+    background-color: $color-lavender-gray;
+    color: $color-slate-gray;
+  }
+}

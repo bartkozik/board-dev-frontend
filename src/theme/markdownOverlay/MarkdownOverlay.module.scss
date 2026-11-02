@@ -1,0 +1,18 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include markdown;
+
+  ul {
+    list-style-type: disc;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  p:has(strong:nth-of-type(2)) {
+    @include flex-container(flex-start, flex-start, column, $gap: 10px);
+    white-space: pre-line;
+  }
+}

@@ -1,0 +1,12 @@
+@use '@/theme/index' as *;
+
+.root {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 20px;
+  z-index: 10;
+}

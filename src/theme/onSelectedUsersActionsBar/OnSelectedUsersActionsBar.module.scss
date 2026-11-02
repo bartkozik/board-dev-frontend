@@ -1,0 +1,29 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, center);
+  width: 100%;
+}
+
+.selectedUsersInfo {
+  @include flex-container(flex-start, center, row, false, 4px);
+  @include font(15);
+  color: $color-oxford-blue;
+
+  :first-child {
+    font-weight: 700;
+  }
+}
+
+.deselect {
+  @include flex-container(flex-start, center, row, false, 4px);
+  @include font(15);
+  color: $color-palatinate-blue;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.actions {
+  @include flex-container(flex-start, center);
+  gap: 16px;
+}

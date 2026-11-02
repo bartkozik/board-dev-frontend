@@ -1,0 +1,67 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+
+  @include screen-sm-minus {
+    width: 100%;
+  }
+}
+
+.breadcrumbs {
+  position: absolute;
+  top: 21.5px;
+}
+
+.loadingArea {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 45px;
+
+  @include screen-xs {
+    @include flex-container(flex-start, flex-start, column);
+    margin-bottom: 15px;
+  }
+
+  .headerContainer {
+    @include flex-container(space-between, flex-end);
+    width: 100%;
+    margin-left: 24px;
+
+    @include screen-xs {
+      flex-direction: column;
+      margin: 15px 0;
+    }
+  }
+
+  .actions {
+    @include flex-container(space-between, flex-end, $gap: 16px);
+    width: fit-content;
+    position: relative;
+
+    @include screen-xs {
+      @include flex-container(space-between, stretch, column, $gap: 16px);
+      width: 100%;
+      margin: 15px 0;
+    }
+  }
+
+  .tooltipMenu {
+    position: absolute;
+    min-width: 170px;
+    top: 45px;
+    right: 0;
+  }
+
+  .tooltipButton {
+    @include flex-container(flex-start, center);
+  }
+}
+
+.chips {
+  @include flex-container(flex-start, flex-start, $gap: 8px);
+}

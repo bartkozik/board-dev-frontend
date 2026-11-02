@@ -1,0 +1,7 @@
+@use '@/theme/index' as *;
+
+.button {
+  @include screen-xs {
+    width: 100%;
+  }
+}

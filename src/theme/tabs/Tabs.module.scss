@@ -1,0 +1,65 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column);
+  width: 100%;
+  height: 100%;
+}
+
+.detailsOptions {
+  @include flex-container(flex-start, flex-start, $gap: 24px);
+  font-weight: medium;
+  border-bottom: 1px solid $color-border;
+  color: $color-slate-gray;
+  width: 100%;
+  height: 100%;
+  padding: 0 0 8px 0;
+}
+
+.regular {
+  @include font(21);
+}
+
+.small {
+  @include font(15);
+}
+
+.headline {
+  cursor: pointer;
+}
+
+.selected {
+  position: relative;
+  color: $color-oxford-blue;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $color-palatinate-blue;
+    display: block;
+  }
+}
+
+.small {
+  .selected {
+    &::after {
+      top: 24px;
+    }
+  }
+}
+
+.loadingArea {
+  width: 100%;
+}
+
+.content {
+  @include flex-container;
+  width: 100%;
+  padding-top: 25px;
+}

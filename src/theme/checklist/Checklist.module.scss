@@ -1,0 +1,37 @@
+@use '@/theme/index' as *;
+
+.root {
+  position: relative;
+  @include flex-container(flex-start, flex-start, column, false, 11px);
+  width: 100%;
+
+  .label {
+    margin-bottom: 6px;
+    width: 100%;
+  }
+
+  .children {
+    @include flex-container(flex-start, flex-start, column, $gap: 4px);
+    margin-top: 2px;
+    width: 100%;
+    position: relative;
+  }
+
+  .passedWarning {
+    position: absolute;
+    right: 0px;
+  }
+
+  .error {
+    @include font(12);
+    position: absolute;
+    color: $color-error;
+    top: calc(100% + 6px);
+    left: 0;
+  }
+
+  .warning {
+    @include font(12);
+    color: $color-palatinate-blue-light;
+  }
+}

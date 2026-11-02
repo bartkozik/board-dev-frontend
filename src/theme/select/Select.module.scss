@@ -1,0 +1,75 @@
+@use '@/theme/index' as *;
+
+.root {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+    caret-color: transparent;
+  }
+}
+
+.disabled {
+  cursor: default;
+}
+
+.active {
+  .arrow {
+    transform: rotate(90deg) translateX(-50%);
+    transition: transform 0.3s;
+  }
+  input {
+    cursor: pointer;
+    border-radius: 16px 16px 0 0;
+    outline: none;
+    z-index: 2;
+  }
+}
+
+.options {
+  padding: 2px;
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 0 0 16px 16px;
+
+  .option {
+    list-style: none;
+    @include font(15);
+    padding: 6px 12px;
+    cursor: pointer;
+    @include flex-container(space-between, center);
+    color: $color-oxford-blue;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    &:hover,
+    &:active {
+      background-color: $color-gray-alt;
+    }
+  }
+}
+
+.arrow {
+  transform: rotate(-90deg) translateX(50%);
+  transition: transform 0.3s;
+  color: $color-slate-gray;
+}
+
+.children {
+  @include flex-container(flex-start, flex-start, column, $gap: 2px);
+  margin-top: 7px;
+  width: 100%;
+}
+
+.error {
+  @include font(12);
+  color: $color-error;
+
+  input {
+    border-color: $color-error;
+  }
+}

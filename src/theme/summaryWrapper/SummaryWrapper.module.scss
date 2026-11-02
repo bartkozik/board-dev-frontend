@@ -1,0 +1,18 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(space-between, flex-start, $gap: 170px);
+  background: $color-summary-wrapper-background;
+  border-radius: 8px;
+  width: 100%;
+  padding: 16px;
+}
+
+.title {
+  @include font(32);
+  font-family: $font-secondary;
+}
+
+.children {
+  width: 100%;
+}

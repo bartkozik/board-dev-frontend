@@ -1,0 +1,8 @@
+@use '@/theme/index' as *;
+
+.input {
+  input {
+    cursor: text;
+    caret-color: $color-oxford-blue;
+  }
+}

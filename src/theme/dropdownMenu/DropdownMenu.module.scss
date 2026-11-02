@@ -1,0 +1,79 @@
+@use '@/theme/index' as *;
+
+.root {
+  position: relative;
+}
+
+.button {
+  @include flex-center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  .arrow {
+    transition: transform 0.2s;
+
+    &.rotated {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &.buttonActive {
+    span {
+      color: $color-palatinate-blue;
+    }
+  }
+}
+
+.dropdownWrapper {
+  padding: 8px 0;
+  background-color: $color-white;
+  border-radius: 8px;
+  position: absolute;
+  right: 5px;
+  overflow: hidden;
+  transition: height 0.2s;
+  box-shadow: $box-shadow;
+  display: none;
+  z-index: 99;
+
+  &.showDropdown {
+    display: block;
+  }
+}
+
+.item {
+  margin: 4px 0;
+  padding: 0 16px;
+  color: $color-slate-gray;
+  @include font(15, $weight: $font-w-regular);
+  height: 21px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: block;
+  white-space: nowrap;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    color: $color-palatinate-blue;
+  }
+
+  &.selected {
+    color: $color-oxford-blue;
+    font-weight: medium;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: $color-palatinate-blue;
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start, column, $gap: 3px);
+  width: 100%;
+  min-height: fit-content;
+  position: relative;
+}
+
+.textarea {
+  width: 100%;
+  @include font(15);
+  color: $color-oxford-blue;
+  padding: 9px 16px;
+  outline: 1px solid $color-border;
+  border-radius: 16px;
+  border-width: 7px 0;
+  border-color: transparent;
+  height: 96px;
+  resize: none;
+  background-color: $color-antiflash-white;
+  text-align: start;
+  line-height: 21px;
+  @include vertical-scrollbar($width: 4px);
+
+  &:disabled {
+    background-color: $color-lavender-gray;
+    cursor: default;
+  }
+
+  &:disabled:active {
+    outline-color: $color-lavender-gray;
+  }
+
+  &:not(:disabled) {
+    &:focus,
+    &:active {
+      outline-color: $color-palatinate-blue;
+      background-color: $color-white;
+    }
+  }
+
+  &.withError {
+    outline-color: $color-error;
+    background-color: $color-white;
+  }
+}
+
+.error {
+  @include font(13, medium);
+  position: absolute;
+  color: $color-error;
+  top: 100%;
+  left: 0;
+}

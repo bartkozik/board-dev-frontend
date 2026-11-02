@@ -1,0 +1,52 @@
+@use '@/theme/index' as *;
+
+.root {
+  &.selected {
+    background-color: $color-palatinate-blue-lighter;
+  }
+}
+
+.userDetails {
+  @include flex-container(flex-start, center);
+  width: 100%;
+
+  @include screen-max(1180px) {
+    @include flex-container(flex-start, flex-start, column, $gap: 15px);
+  }
+
+  @include screen-xs {
+    gap: 10px;
+  }
+}
+
+.username {
+  @include font(16);
+  width: 80%;
+  color: $color-oxford-blue;
+  margin: 0 13.5px 0 15.5px;
+  @include shorten-long-string;
+
+  @include screen-max(1180px) {
+    margin: 0;
+  }
+
+  @include screen-sm-minus {
+    @include font(14);
+    margin: 5px 0;
+  }
+
+  @include screen-xs {
+    margin: 0;
+    max-width: 150px;
+  }
+}
+
+.interests {
+  @include flex-container(flex-start, center, $gap: 8px);
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.companyChip {
+  max-width: 120px;
+}

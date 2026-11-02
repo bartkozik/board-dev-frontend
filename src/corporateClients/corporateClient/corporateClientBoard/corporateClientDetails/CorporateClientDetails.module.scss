@@ -1,0 +1,15 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(flex-start, flex-start);
+  width: 100%;
+
+  @include screen-xs {
+    flex-direction: column;
+  }
+}
+
+.corporateClientInfo {
+  @include flex-container;
+  width: 100%;
+}

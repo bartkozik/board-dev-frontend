@@ -1,0 +1,32 @@
+@use '@/theme/index' as *;
+
+$mobile-breakpoint: 468px;
+
+.topbar {
+  @include flex-container(flex-start, center, $gap: 40px);
+  margin-bottom: 35.5px;
+  width: 100%;
+
+  @include screen-max($mobile-breakpoint) {
+    @include flex-container(flex-start, flex-start, column);
+  }
+}
+
+.actionsContainer {
+  @include flex-container(space-between, center, $gap: 24px);
+  width: 100%;
+
+  @include screen-xs {
+    @include flex-container(flex-end, center, column, $gap: 16px);
+    flex-direction: column-reverse;
+  }
+
+  @include screen-max($mobile-breakpoint) {
+    margin: 15px 0;
+  }
+}
+
+.instruction {
+  @include font(14);
+  color: $color-slate-gray;
+}

@@ -1,0 +1,8 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include font(14);
+  color: $color-slate-gray;
+  max-width: 450px;
+  padding-top: 12px;
+}

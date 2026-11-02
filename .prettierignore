@@ -1,0 +1,10 @@
+.husky
+.storybook
+node_modules
+public
+.gitlab-ci.yml
+Dockerfile
+nginx.conf
+package-lock.json
+README.md
+yarn.lock

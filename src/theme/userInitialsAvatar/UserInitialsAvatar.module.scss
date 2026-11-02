@@ -1,0 +1,36 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  background-color: $color-slate-gray;
+  @include font(14);
+  color: $color-white;
+  cursor: default;
+
+  svg path {
+    fill: $color-white;
+  }
+}
+
+.regular {
+  width: 40px;
+  height: 40px;
+}
+
+.large {
+  min-width: 328px;
+  height: 328px;
+  border-radius: 24px;
+  @include font(71);
+}
+
+.tooltip {
+  @include font(12);
+  background-color: $color-gray-lighter;
+  font-family: $font-primary;
+  padding: 4px 8px 8px 6px;
+  text-align: center;
+}

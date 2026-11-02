@@ -1,0 +1,38 @@
+@use '@/theme/index' as *;
+
+.root {
+  @include flex-container(center, center, 'row wrap', true);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $color-lavender-gray;
+
+    svg {
+      color: $color-white;
+    }
+  }
+}
+
+.regular {
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-radius: 6px;
+  }
+}
+
+.rounded {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+}
