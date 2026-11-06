@@ -38,7 +38,6 @@ export const comparingSectionsConfig: Record<NonAdminUserRole, (Section | Subsec
           type: ConfigFieldKind.Checklist,
           compareId: 'focusAreas',
         },
-        //Custom question form Dell users
         {
           label: 'Focus areas:',
           keyName: 'NonprofitFocusAreasDell',

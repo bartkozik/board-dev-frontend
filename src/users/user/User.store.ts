@@ -131,7 +131,6 @@ class UserStore {
 
           initializeFormFromFormattedData(this.selectedUser.formattedFormData, isNpoUser);
 
-          //HARDCODED form values for users connected with DELL INC.
           if (this.selectedUser.isConnectedWithDellCompany) {
             DELL_FORM_DATA.forEach(({ key, value }) => {
               updateUserFormField(formConfig, key, value);

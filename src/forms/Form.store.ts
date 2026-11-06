@@ -101,7 +101,6 @@ class FormStore {
       return acc;
     }, {} as Record<string, boolean>);
 
-    //formCompletionRatio with ratio calculation for Dell Tech. connected users
     const formCompletionRatio = isSelectedUserConnectedWithDell
       ? (filledFields.length - DELL_FORM_DATA.length) / (totalFields.length - DELL_FORM_DATA.length)
       : filledFields.length / totalFields.length;

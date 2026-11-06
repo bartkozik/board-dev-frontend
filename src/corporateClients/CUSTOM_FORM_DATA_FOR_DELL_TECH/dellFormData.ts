@@ -1,6 +1,5 @@
 import { FormData } from '@/forms/types';
 
-//This is hardcoded content for fields in application for users connected with Dell Tech.
 export const DELL_TECHNOLOGIES_ID = '00000000-0000-4000-8000-000000000000';
 
 export const DELL_FORM_DATA: FormData[] = [

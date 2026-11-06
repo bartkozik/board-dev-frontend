@@ -17,7 +17,6 @@ export const parseJwt = (token: string): any => {
   return JSON.parse(jsonPayload);
 };
 
-// ------------------ Access Token ------------------
 export const getAccessTokenFromLocalStorage = (): string | null => {
   return localStorage.getItem(LOCAL_STORAGE_AUTH_NAME.ACCESS_TOKEN);
 };
@@ -35,7 +34,6 @@ export function removeAccessTokenFromLocalStorage(): void {
   localStorage.removeItem(LOCAL_STORAGE_AUTH_NAME.ACCESS_TOKEN);
 }
 
-// ------------------ Refresh Token ------------------
 export const getRefreshTokenFromLocalStorage = (): string | null => {
   return localStorage.getItem(LOCAL_STORAGE_AUTH_NAME.REFRESH_TOKEN);
 };
@@ -49,7 +47,6 @@ export const removeRefreshTokenFromLocalStorage = (): void => {
   localStorage.removeItem(LOCAL_STORAGE_AUTH_NAME.REFRESH_TOKEN);
 };
 
-// ------------------ Device ID ------------------
 export const getDeviceId = (): string | null => {
   return localStorage.getItem(LOCAL_STORAGE_AUTH_NAME.DEVICE_ID);
 };
