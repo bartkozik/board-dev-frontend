@@ -1,32 +1,14 @@
 import { AxiosResponse } from 'axios';
-import { UserRole } from '@/users/types';
+import { z } from 'zod';
+import { authSchema, authUserSchema } from './user.schema';
 
 export enum IdentityType {
   MailAddress = 'MailAddress',
 }
 
-interface Identity {
-  main: boolean;
-  type: IdentityType;
-  value: string;
-}
-
-export interface AuthUser {
-  authedBy: string[];
-  email: string;
-  exp: number;
-  fresh: boolean;
-  iat: number;
-  id: string;
-  identities: Identity[];
-  lastAuthedAt: string;
-  roles: UserRole[];
-}
-
-export interface Auth {
-  token: string;
-  user: AuthUser;
-}
+export type AuthTokenUser = z.infer<typeof authUserSchema>;
+export type AuthUser = AuthTokenUser & { email: string };
+export type Auth = z.infer<typeof authSchema>;
 
 export interface AuthTokens {
   accessToken: string;

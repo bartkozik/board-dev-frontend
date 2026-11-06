@@ -15,7 +15,7 @@ const TestForm: React.FC = () => {
     formState: { errors },
   } = formMethods;
 
-  const onSubmit = (data: any): void => {
+  const onSubmit = (data: z.infer<typeof testSchema>): void => {
     console.log('Submitted data:', data);
   };
 
@@ -42,10 +42,10 @@ const TestForm: React.FC = () => {
       </button>
       <button
         type="button"
-        onClick={() => clearValidationErrors(['invalidUserName'] as any)}
-        data-testid="clearInvalidUserNameError"
+        onClick={() => clearValidationErrors(['password'])}
+        data-testid="clearPasswordError"
       >
-        Clear Invalid UserName Error
+        Clear Password Error
       </button>
     </form>
   );

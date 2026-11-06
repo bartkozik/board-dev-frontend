@@ -96,7 +96,7 @@ describe('useFormValidation Hook via TestForm Component', () => {
     });
   });
 
-  it('should not throw error when attempting to clear non-existent validation errors', async () => {
+  it('should not throw error when clearing an error-free field', async () => {
     render(<TestForm />);
 
     fireEvent.change(screen.getByTestId('userName'), { target: { value: '' } });
@@ -109,7 +109,7 @@ describe('useFormValidation Hook via TestForm Component', () => {
       expect(screen.queryByTestId('passwordError')).not.toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByTestId('clearInvalidUserNameError'));
+    fireEvent.click(screen.getByTestId('clearPasswordError'));
 
     await waitFor(() => {
       expect(screen.getByTestId('userNameError')).toHaveTextContent('User name is required');

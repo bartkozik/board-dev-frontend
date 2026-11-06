@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { RootStore } from '@/RootStore';
 import {
-  getAccessTokenFromLocalStorage,
+  readStoredAuth,
   getRefreshTokenFromLocalStorage,
   removeAccessTokenFromLocalStorage,
   removeRefreshTokenFromLocalStorage,
@@ -43,12 +43,12 @@ class AuthStore {
   }
 
   private init = (): void | null => {
-    const authDetails = getAccessTokenFromLocalStorage();
+    const authDetails = readStoredAuth();
     const refreshToken = getRefreshTokenFromLocalStorage();
 
     if (!authDetails || !refreshToken) return null;
 
-    this.saveAccessToken(JSON.parse(authDetails));
+    this.saveAccessToken(authDetails);
     this.saveRefreshToken(refreshToken);
   };
 
@@ -78,7 +78,7 @@ class AuthStore {
         withToast && addToast(toastMessages.USERS.CREATE_SUCCESS, 'success');
         return;
       })
-      .catch((err) =>
+      .catch((err: unknown) =>
         showErrorToast(
           {
             default: toastMessages.USERS.CREATE_ERROR,
@@ -102,8 +102,8 @@ class AuthStore {
         const refreshTokenData = saveRefreshTokenInLocalStorage(refreshToken);
         this.saveRefreshToken(refreshTokenData);
       })
-      .catch((err) => {
-        if (err.message === API_ERROR_STATUS_TYPE.TOKEN_EXPIRED) return toastMessages.AUTH.LOGIN_TOKEN_EXPIRED;
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.message === API_ERROR_STATUS_TYPE.TOKEN_EXPIRED) return toastMessages.AUTH.LOGIN_TOKEN_EXPIRED;
         else return toastMessages.DEFAULT.ERROR;
       })
       .finally(() => runInAction(() => (this.submittingLogin = false)));
@@ -116,7 +116,7 @@ class AuthStore {
     return requests
       .sendEmailWithMagicLink(email)
       .then(() => true)
-      .catch((err) => {
+      .catch((err: unknown) => {
         showErrorToast(
           {
             default: toastMessages.DEFAULT.ERROR,
@@ -177,7 +177,7 @@ class AuthStore {
         this.removeAccessToken();
         removeAccessTokenFromLocalStorage();
       })
-      .catch((err) => {
+      .catch((err: unknown) => {
         showErrorToast({ default: toastMessages.AUTH.LOGOUT_ERROR }, err);
       })
       .finally(() => runInAction(() => (this.submittingLogout = false)));

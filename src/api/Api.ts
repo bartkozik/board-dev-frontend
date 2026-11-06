@@ -4,9 +4,8 @@ import qs from 'qs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { rootStore } from '@/RootStore';
 import { routes } from '@/app/routes';
-import { Auth } from '@/auth/types';
 import env from '@/domain/env';
-import { getAccessTokenFromLocalStorage, getDeviceId, getRefreshTokenFromLocalStorage } from './utils';
+import { readStoredAuth, getDeviceId, getRefreshTokenFromLocalStorage } from './utils';
 
 const LEEWAY = 1;
 dayjs.extend(isSameOrBefore);
@@ -23,8 +22,7 @@ const api = axios.create({
 api.interceptors.request.use(
   async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
     return new Promise((resolve) => {
-      const authDetails = getAccessTokenFromLocalStorage();
-      const parsedAuthDetails: Auth | null = authDetails ? (JSON.parse(authDetails) as Auth) : null;
+      const parsedAuthDetails = readStoredAuth();
 
       const refreshToken = getRefreshTokenFromLocalStorage();
 
@@ -74,8 +72,8 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => Promise.resolve(response),
-  (error) => {
-    if (!error.config.url.startsWith('/auth') && error.response?.status === 401) {
+  (error: unknown) => {
+    if (axios.isAxiosError<unknown>(error) && !error.config?.url?.startsWith('/auth') && error.response?.status === 401) {
       rootStore.authStore.logout();
       return window.location.replace(location.origin + routes.Login.path());
     } else return Promise.reject(error);

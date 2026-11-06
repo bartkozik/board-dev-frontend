@@ -19,17 +19,18 @@ interface ErrorMessageMap {
   [key: string]: ErrorTypeMessages | string;
 }
 
-export function showErrorToast(errorMessageMap: ErrorMessageMap, error: Error): void {
+export function showErrorToast(errorMessageMap: ErrorMessageMap, error: unknown): void {
   const { addToast, toastMessages } = rootStore.toastsStore;
 
-  if (!axios.isAxiosError(error)) {
+  if (!axios.isAxiosError<unknown>(error)) {
     addToast(toastMessages.DEFAULT.ERROR, 'error');
     return;
   }
 
   const { response } = error;
   const statusCode = response?.status?.toString() ?? 'default';
-  const errorType = response?.data.type;
+  const data = response?.data;
+  const errorType = data && typeof data === 'object' && 'type' in data && typeof data.type === 'string' ? data.type : undefined;
 
   let toastMessage = errorMessageMap.default as string;
 

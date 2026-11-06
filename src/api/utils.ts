@@ -1,10 +1,11 @@
 import { v4 as uuid4 } from 'uuid';
 import { LOCAL_STORAGE_AUTH_NAME } from '@/auth/constants';
-import { Auth } from '@/auth/types';
+import { authSchema, authUserSchema } from '@/auth/user.schema';
+import { Auth, AuthTokenUser } from '@/auth/types';
 
-// eslint-disable-next-line
-export const parseJwt = (token: string): any => {
+export const parseJwt = (token: string): AuthTokenUser => {
   const base64Url = token.split('.')[1];
+  if (!base64Url) throw new Error('Invalid access token');
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   const jsonPayload = decodeURIComponent(
     atob(base64)
@@ -14,11 +15,23 @@ export const parseJwt = (token: string): any => {
       })
       .join('')
   );
-  return JSON.parse(jsonPayload);
+  return authUserSchema.parse(JSON.parse(jsonPayload));
 };
 
 export const getAccessTokenFromLocalStorage = (): string | null => {
   return localStorage.getItem(LOCAL_STORAGE_AUTH_NAME.ACCESS_TOKEN);
+};
+
+export const readStoredAuth = (): Auth | null => {
+  const stored = getAccessTokenFromLocalStorage();
+  if (!stored) return null;
+  try {
+    return authSchema.parse(JSON.parse(stored));
+  } catch {
+    removeAccessTokenFromLocalStorage();
+    removeRefreshTokenFromLocalStorage();
+    return null;
+  }
 };
 
 export const saveAccessTokenInLocalStorage = (token: string): Auth => {
