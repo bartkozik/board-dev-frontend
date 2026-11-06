@@ -37,51 +37,55 @@ const otherFieldValidation = z
   .string()
   .refine((value) => value.trim().length > 0, 'Please provide a value for "other".');
 
-export const npoFormSchemas = z.object({
-  ...NPO_FORM_KEYS_WITH_CHECKLIST.reduce((acc, key) => {
+export const npoFormShape = {
+  ...NPO_FORM_KEYS_WITH_CHECKLIST.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: checklistFieldValidation };
   }, {}),
-  ...NPO_FORM_KEYS_WITH_INPUT.reduce((acc, key) => {
+  ...NPO_FORM_KEYS_WITH_INPUT.reduce<z.ZodRawShape>((acc, key) => {
     const validation = NPO_FORM_OPTIONAL.includes(key) ? z.string().optional() : inputFieldValidation;
     return { ...acc, [key]: validation };
   }, {}),
-  ...NPO_FORM_KEYS_WITH_CHECKBOX.reduce((acc, key) => {
+  ...NPO_FORM_KEYS_WITH_CHECKBOX.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: NPO_FORM_OPTIONAL.includes(key) ? z.boolean().optional() : checkboxFieldValidation };
   }, {}),
-  ...NPO_FORM_KEYS_WITH_MULTIPLE_SCALE.reduce((acc, key) => {
+  ...NPO_FORM_KEYS_WITH_MULTIPLE_SCALE.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: scaleFieldValidation };
   }, {}),
-  ...NPO_FORM_KEYS_WITH_RADIO_OR_SELECT.reduce((acc, key) => {
+  ...NPO_FORM_KEYS_WITH_RADIO_OR_SELECT.reduce<z.ZodRawShape>((acc, key) => {
     acc[key] = radioFieldValidation;
     return acc;
   }, {}),
-  ...NPO_FORM_CHECKLIST_FIELDS_WITH_OTHER.reduce((acc, key) => {
+  ...NPO_FORM_CHECKLIST_FIELDS_WITH_OTHER.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [`${key}OtherValue`]: otherFieldValidation };
   }, {}),
-  ...NPO_FORM_RADIO_SELECT_WITH_OTHER_INPUT_FIELDS.reduce((acc, key) => {
+  ...NPO_FORM_RADIO_SELECT_WITH_OTHER_INPUT_FIELDS.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: otherFieldValidation };
   }, {}),
-}) as z.ZodType<NpoFormType>;
+};
 
-export const techLeaderFormSchemas = z.object({
-  ...TECH_LEADER_FORM_KEYS_WITH_CHECKLIST.reduce((acc, key) => {
+export const npoFormSchemas = z.object(npoFormShape) as z.ZodType<NpoFormType>;
+
+export const techLeaderFormShape = {
+  ...TECH_LEADER_FORM_KEYS_WITH_CHECKLIST.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: checklistFieldValidation };
   }, {}),
-  ...TECH_LEADER_FORM_KEYS_WITH_SCALE.reduce((acc, key) => {
+  ...TECH_LEADER_FORM_KEYS_WITH_SCALE.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: scaleFieldValidation };
   }, {}),
-  ...TECH_LEADER_FORM_KEYS_WITH_INPUT.reduce((acc, key) => {
+  ...TECH_LEADER_FORM_KEYS_WITH_INPUT.reduce<z.ZodRawShape>((acc, key) => {
     const validation = TECH_LEADER_FORM_OPTIONAL.includes(key) ? z.string().optional() : inputFieldValidation;
     return { ...acc, [key]: validation };
   }, {}),
-  ...TECH_LEADER_FORM_KEYS_WITH_RADIO_OR_SELECT.reduce((acc, key) => {
+  ...TECH_LEADER_FORM_KEYS_WITH_RADIO_OR_SELECT.reduce<z.ZodRawShape>((acc, key) => {
     acc[key] = radioFieldValidation;
     return acc;
   }, {}),
-  ...TECH_LEADER_CHECKLIST_FIELDS_WITH_OTHER.reduce((acc, key) => {
+  ...TECH_LEADER_CHECKLIST_FIELDS_WITH_OTHER.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [`${key}OtherValue`]: otherFieldValidation };
   }, {}),
-  ...TECH_LEADER_SELECT_RADIO_WITH_OTHER_INPUT_FIELDS.reduce((acc, key) => {
+  ...TECH_LEADER_SELECT_RADIO_WITH_OTHER_INPUT_FIELDS.reduce<z.ZodRawShape>((acc, key) => {
     return { ...acc, [key]: otherFieldValidation };
   }, {}),
-}) as z.ZodType<TechLeaderFormType>;
+};
+
+export const techLeaderFormSchemas = z.object(techLeaderFormShape) as z.ZodType<TechLeaderFormType>;

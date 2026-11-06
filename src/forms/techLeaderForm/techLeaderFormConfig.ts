@@ -225,7 +225,6 @@ export const TECH_LEADER_FORM_CONFIG: FormConfig = {
       instruction: 'Please select all that apply to increase the likelihood of a match.',
       fields: TECH_LEADER_FOCUS_AREAS,
     },
-    //DELL custom non profit areas field
     {
       name: 'nonprofitFocusAreasDell',
       type: ConfigFieldKind.Textarea,

@@ -70,7 +70,9 @@
     "typescript": "^5.4.5",
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.1",
+    "@types/qs": "6.9.18",
+    "@types/lodash": "4.17.13"
   },
   "scripts": {
     "dev": "vite --open",

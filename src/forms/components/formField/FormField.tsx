@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { ChangeEvent, ReactNode } from 'react';
 import { Control } from 'react-hook-form';
 import {
@@ -27,6 +28,8 @@ import ControlledFormField from '../controlledFormField';
 import FormQuestion from '../formQuestion';
 import OtherValueInput from '../otherValueInput';
 import styles from './FormField.module.scss';
+
+const checklistFieldValidation = z.record(z.boolean());
 
 const EIN_LINK = 'https://www.irs.gov/businesses/non-profit-organizations/non-profit-organizations-ein';
 const ROLE_DESCRIPTION_LINK = 'https://example.invalid/role-description';
@@ -109,7 +112,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
                 label={item.label}
                 secondaryLabel={item.secondaryLabel ? organizationEinSublabel : null}
                 maxWidth
-                value={field.value}
+                value={typeof field.value === 'string' ? field.value : ''}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
                   field.onChange(e);
                   clearValidationErrors([item.name]);
@@ -152,7 +155,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
               <TextArea
                 name={item.name}
                 label={<FormQuestion question={replaceRoleDescriptionWithLink(item.name, item.label)} />}
-                value={field.value}
+                value={typeof field.value === 'string' ? field.value : ''}
                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                   field.onChange(e);
                   clearValidationErrors([item.name]);
@@ -177,7 +180,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
                 name={item.name}
                 groupLabel={<FormQuestion question={item.label} />}
                 options={item.options}
-                selectedValue={field.value}
+                selectedValue={typeof field.value === 'string' ? field.value : ''}
                 onChange={(value: string) => {
                   const newValue = isOtherSelected ? `other: ${otherValue}` : value;
                   field.onChange(value);
@@ -220,7 +223,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
                   name={item.name}
                   label={item.label}
                   options={item.options}
-                  value={field.value}
+                  value={typeof field.value === 'string' ? field.value : ''}
                   onSelect={(option: SelectOption) => {
                     const isOther = option.value === 'other';
                     const newValue = isOther ? `other: ${otherValue}` : option.value;
@@ -256,15 +259,16 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
         return (
           <ControlledFormField name={item.name} control={control}>
             {(field, fieldState) => {
-              const checklistValue = field.value;
+              const checklistValue = checklistFieldValidation.safeParse(field.value);
+              const checklistValues = checklistValue.success ? checklistValue.data : {};
 
               const fields = item.fields?.map((fieldItem: ChecklistField) => ({
                 label: fieldItem.label,
-                value: Boolean(checklistValue[fieldItem.key]),
+                value: Boolean(checklistValues[fieldItem.key]),
                 key: fieldItem.key,
               }));
 
-              const isOtherSelected = Boolean(checklistValue['other']);
+              const isOtherSelected = Boolean(checklistValues['other']);
               const otherValue = getValues(`${item.name}OtherValue`);
 
               return (
@@ -274,7 +278,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
                   maxSelection={item.maxSelections}
                   onChange={(value: boolean, key: string) => {
                     const updatedChecklist: NpoChecklist | TechLeaderChecklist = {
-                      ...checklistValue,
+                      ...checklistValues,
                       [key]: value,
                     };
 
@@ -322,7 +326,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
               <FormQuestion question={item.label} />
               <FormScale
                 scale={item.scale}
-                selectedValue={field.value}
+                selectedValue={typeof field.value === 'number' ? field.value : 0}
                 onSelect={(value: number): void => {
                   field.onChange(value);
                   updateForm(item.name, value as T);
@@ -357,7 +361,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
                       updateForm(scale.key, value as T);
                       updateUserFormField(formSetup.config, scale.key, value.toString());
                     }}
-                    selectedValue={field.value}
+                    selectedValue={typeof field.value === 'number' ? field.value : 0}
                   />
                   <span className={styles.error}>{fieldState.error?.message}</span>
                 </div>

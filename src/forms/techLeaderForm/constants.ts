@@ -31,7 +31,7 @@ export const TECH_LEADER_FORM_KEYS_WITH_STRING = [
 
 export const TECH_LEADER_FORM_KEYS_OF_CHECKLIST = config
   .filter((field) => field.type === ConfigFieldKind.Checklist)
-  .reduce((acc, field) => ({ ...acc, [field.name]: field.fields.map((field) => field.key) }), {});
+  .reduce<Record<string, string[]>>((acc, field) => ({ ...acc, [field.name]: field.fields.map((field) => field.key) }), {});
 
 export const TECH_LEADER_FORM_OPTIONAL = config.filter((field) => field.optional).map((field) => field.name);
 

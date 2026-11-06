@@ -40,11 +40,12 @@ const MarkdownEditArea = <T extends FieldValues>({
           control={control}
           defaultValue={defaultValue}
           render={({ field }) => {
-            const { onChange: fieldOnChange, value } = field;
-            const formattedValue = value?.replace(/\n/g, '\n\n') || '';
+            const { onChange: fieldOnChange } = field;
+            const value: unknown = field.value;
+            const formattedValue = typeof value === 'string' ? value.replace(/\n/g, '\n\n') : '';
 
             useEffect(() => {
-              if (!initialized && value && editorRef.current) {
+              if (!initialized && typeof value === 'string' && value && editorRef.current) {
                 editorRef.current.getInstance().setMarkdown(value);
                 setInitialized(true);
               }

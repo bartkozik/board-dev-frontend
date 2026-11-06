@@ -1,10 +1,10 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { defineConfig, loadEnv, UserConfig } from 'vite';
+import { defineConfig, loadEnv, UserConfig, ConfigEnv } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-export default ({ mode }): UserConfig => {
+export default ({ mode }: ConfigEnv): UserConfig => {
   process.env = Object.assign(process.env, loadEnv(mode, process.cwd(), ''));
 
   return defineConfig({

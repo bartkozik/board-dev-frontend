@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Card from '@/theme/card';
-import { User } from '@/users/types';
+import { RawUserRole, User } from '@/users/types';
 import { comparingSectionsConfig } from '../../comparingSectionsConfig';
 import ComparisonCardSection from '../comparisonCardSection';
 import styles from './ComparisonCard.module.scss';
@@ -15,7 +15,8 @@ interface ComparisonCardProps {
 const ComparisonCard = ({ user, isComparedCard, className, rowHeights }: ComparisonCardProps): JSX.Element => {
   if (!user) return <></>;
 
-  const sections = user ? comparingSectionsConfig[user.roles[0]] : [];
+  const role = user.roles[0];
+  const sections = role === RawUserRole.Admin ? [] : comparingSectionsConfig[role];
 
   return (
     <Card className={clsx(styles.root, className)}>

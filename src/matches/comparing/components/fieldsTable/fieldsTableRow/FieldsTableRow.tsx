@@ -14,7 +14,6 @@ const FieldsTableRow = ({ field, user, withoutFieldLabel = false, rowHeights }: 
   const rowId = field.compareId;
   const forcedHeight = rowHeights?.[rowId] ? rowHeights[rowId] : undefined;
 
-  //standard focus area field hidden for Dell users
   const isfocusAreaRowHidden =
     (user?.isConnectedWithDellCompany && field.keyName === 'NonprofitFocusAreas') ||
     (!user?.isConnectedWithDellCompany && field.keyName === 'NonprofitFocusAreasDell');

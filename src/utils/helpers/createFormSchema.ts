@@ -2,7 +2,7 @@ import { z, ZodType } from 'zod';
 import { RawCustomFormQuestion } from '@/corporateClients/types';
 import { NpoFormType } from '@/forms/NPOform/types';
 import { TechLeaderFormType } from '@/forms/techLeaderForm/types';
-import { npoFormSchemas, techLeaderFormSchemas } from '@/forms/zodSchemas';
+import { npoFormShape, techLeaderFormShape } from '@/forms/zodSchemas';
 import { RawUserRole } from '@/users/types';
 import { createCustomQuestionsValidation } from './createCustomQuestionsValidation';
 
@@ -12,9 +12,7 @@ export const createFormSchema = (
 ): ZodType<NpoFormType> | ZodType<TechLeaderFormType> => {
   const isNPO = userRole === RawUserRole.NPO;
 
-  const baseSchema = isNPO ? npoFormSchemas : techLeaderFormSchemas;
-
-  const baseSchemaShape = (baseSchema as z.AnyZodObject).shape;
+  const baseSchemaShape = isNPO ? npoFormShape : techLeaderFormShape;
 
   const customQuestionValidations = createCustomQuestionsValidation(customQuestions, userRole);
 

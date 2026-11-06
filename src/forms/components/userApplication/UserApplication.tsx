@@ -71,7 +71,6 @@ const UserApplication = ({
           clearValidationErrors={clearValidationErrors}
           updateForm={currentFormUpdate}
           updateUserFormField={updateUserFormField}
-          //added for DELL users
           isDellUser={isUserConnectedWithDELL}
         />
       ))}

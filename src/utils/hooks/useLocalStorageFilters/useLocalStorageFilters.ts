@@ -1,7 +1,18 @@
+import { z } from 'zod';
 import { useState, useEffect, useCallback, SetStateAction, Dispatch } from 'react';
 import { LOCAL_STORAGE_FILTERS_KEY, LOCAL_STORAGE_PREVIOUS_FILTERS_KEY } from '@/domain/constants';
 import { FilterState } from '@/domain/types';
 import { NonAdminUserRole } from '@/users/types';
+
+const filterSchema = z.record(z.array(z.string()));
+
+export function parseFilters(stored: string): FilterState | null {
+  try {
+    return filterSchema.parse(JSON.parse(stored));
+  } catch {
+    return null;
+  }
+}
 
 function removeEmptyArrays(filters: FilterState): FilterState {
   return Object.entries(filters).reduce((acc, [key, value]) => {
@@ -26,10 +37,8 @@ function getFiltersForRole(role: NonAdminUserRole): {
     };
   }
 
-  return {
-    savedFilters: JSON.parse(stored),
-    roleHasSavedFilters: true,
-  };
+  const savedFilters = parseFilters(stored);
+  return { savedFilters: savedFilters ?? {}, roleHasSavedFilters: savedFilters !== null };
 }
 
 export interface FiltersActions {
@@ -88,7 +97,7 @@ export function useLocalStorageFilters(role: NonAdminUserRole): FiltersActions {
         return;
       }
 
-      const parsedFilters = JSON.parse(stored) as FilterState;
+      const parsedFilters = parseFilters(stored) ?? {};
 
       if (!filterValue) delete parsedFilters[filterKey];
       else {

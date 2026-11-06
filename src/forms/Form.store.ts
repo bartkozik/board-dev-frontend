@@ -72,9 +72,10 @@ class FormStore {
         };
 
     const additionalQuestions = convertCustomQuestionsToFormConfig(customQuestions, selectedUser.roles[0]);
-    const configKey = ADDITIONAL_QUESTIONS_KEY[selectedUser.roles[0]];
+    const role = selectedUser.roles[0];
+    const configKey = role === RawUserRole.Admin ? undefined : ADDITIONAL_QUESTIONS_KEY[role];
 
-    if (formConfig[configKey]) formConfig[configKey] = [...additionalQuestions, ...formConfig[configKey]];
+    if (configKey !== undefined && formConfig[configKey]) formConfig[configKey] = [...additionalQuestions, ...formConfig[configKey]];
 
     const currentForm = isNPO ? this.rootStore.npoFormStore.npoForm : this.rootStore.techLeaderFormStore.techLeaderForm;
 
@@ -101,7 +102,6 @@ class FormStore {
       return acc;
     }, {} as Record<string, boolean>);
 
-    //formCompletionRatio with ratio calculation for Dell Tech. connected users
     const formCompletionRatio = isSelectedUserConnectedWithDell
       ? (filledFields.length - DELL_FORM_DATA.length) / (totalFields.length - DELL_FORM_DATA.length)
       : filledFields.length / totalFields.length;
@@ -180,7 +180,7 @@ class FormStore {
 
     if (!userForm || userForm.length === 0) return;
 
-    const updatedForm = JSON.parse(JSON.stringify(formInitializer));
+    const updatedForm = structuredClone(formInitializer);
 
     this.populateUpdatedForm(updatedForm, formConfig);
 
@@ -232,7 +232,7 @@ class FormStore {
     if (!loggedInUser) return Promise.resolve();
 
     const updatedUser = {
-      googleDocuments: GOOGLE_DOC_BY_ROLE[role],
+      googleDocuments: role === RawUserRole.Admin ? [] : GOOGLE_DOC_BY_ROLE[role],
       formCompleted: true,
     };
 

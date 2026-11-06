@@ -6,15 +6,12 @@ import { SelectOption } from '@/theme/select/Select';
 import { NpoChecklist, NpoFormType, NpoOtherValuesStringKeys } from './NPOform/types';
 import { TechLeaderOtherValuesStringKeys, TechLeaderFormType, TechLeaderChecklist } from './techLeaderForm/types';
 
-// / Helper function for initializing boolean records
 export const createBooleanRecord = <T extends readonly string[]>(keys: T): Record<T[number], boolean> =>
   Object.fromEntries(keys.map((key) => [key, false])) as Record<T[number], boolean>;
 
-// Helper function for initializing string records
 export const createStringRecord = <T extends readonly string[]>(keys: T): Record<T[number], string> =>
   Object.fromEntries(keys.map((key) => [key, ''])) as Record<T[number], string>;
 
-// Helper function for initializing number records
 export const createNumberRecord = <T extends readonly string[]>(keys: T): Record<T[number], number> =>
   Object.fromEntries(keys.map((key) => [key, 0])) as Record<T[number], number>;
 

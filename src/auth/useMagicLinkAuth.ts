@@ -23,7 +23,9 @@ const useMagicLinkAuth = (): UseMagicLinkAuthReturn => {
 
   useEffect(() => {
     if (emailFromUrl && tokenFromUrl) {
-      loginWithToken(emailFromUrl, tokenFromUrl).catch((error) => setErrorMessage(error));
+      loginWithToken(emailFromUrl, tokenFromUrl)
+        .then((message) => { if (message) setErrorMessage(message); })
+        .catch((error: unknown) => setErrorMessage(error instanceof Error ? error.message : 'Unable to sign in.'));
     }
   }, [emailFromUrl, tokenFromUrl]);
 
