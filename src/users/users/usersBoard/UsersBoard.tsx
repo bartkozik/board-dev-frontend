@@ -6,7 +6,6 @@ import { INSTRUCTIONS } from '@/domain/instructions';
 import { SortByParams } from '@/domain/sorting';
 import { Tab } from '@/domain/types';
 import Board from '@/theme/board';
-import { DEFAULT_USERS_TAB } from '@/users/constants';
 import AddUser from '@/users/user/addUser';
 import ReadyMatchTable from '@/users/users/readyMatchTable';
 import UsersTable from '../usersTable';

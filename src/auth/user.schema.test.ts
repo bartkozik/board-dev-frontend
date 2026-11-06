@@ -1,3 +1,5 @@
+import { parseJwt, readStoredAuth } from '@/api/utils';
+import { LOCAL_STORAGE_AUTH_NAME } from './constants';
 import { authUserSchema } from './user.schema';
 import { RawUserRole } from '@/users/types';
 
@@ -31,4 +33,29 @@ describe('authentication payload validation', () => {
   ])('rejects malformed payloads', (input) => {
     expect(authUserSchema.safeParse(input).success).toBe(false);
   });
+});
+
+describe('stored authentication', () => {
+  beforeEach(() => localStorage.clear());
+
+  it('decodes the backend token contract', () => {
+    const token = `header.${btoa(JSON.stringify(user))}.signature`;
+    expect(parseJwt(token)).toEqual(user);
+  });
+
+  it('restores validated tokens', () => {
+    const stored = { token: 'test-token', user };
+    localStorage.setItem(LOCAL_STORAGE_AUTH_NAME.ACCESS_TOKEN, JSON.stringify(stored));
+    expect(readStoredAuth()).toEqual(stored);
+  });
+
+  it.each(['{broken', JSON.stringify({ token: 'test-token', user: { roles: 'Admin' } })])(
+    'clears corrupt authentication without crashing startup', (stored) => {
+      localStorage.setItem(LOCAL_STORAGE_AUTH_NAME.ACCESS_TOKEN, stored);
+      localStorage.setItem(LOCAL_STORAGE_AUTH_NAME.REFRESH_TOKEN, 'test-refresh');
+      expect(readStoredAuth()).toBeNull();
+      expect(localStorage.getItem(LOCAL_STORAGE_AUTH_NAME.ACCESS_TOKEN)).toBeNull();
+      expect(localStorage.getItem(LOCAL_STORAGE_AUTH_NAME.REFRESH_TOKEN)).toBeNull();
+    }
+  );
 });
