@@ -260,15 +260,15 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
           <ControlledFormField name={item.name} control={control}>
             {(field, fieldState) => {
               const checklistValue = checklistFieldValidation.safeParse(field.value);
-              const values = checklistValue.success ? checklistValue.data : {};
+              const checklistValues = checklistValue.success ? checklistValue.data : {};
 
               const fields = item.fields?.map((fieldItem: ChecklistField) => ({
                 label: fieldItem.label,
-                value: Boolean(values[fieldItem.key]),
+                value: Boolean(checklistValues[fieldItem.key]),
                 key: fieldItem.key,
               }));
 
-              const isOtherSelected = Boolean(values['other']);
+              const isOtherSelected = Boolean(checklistValues['other']);
               const otherValue = getValues(`${item.name}OtherValue`);
 
               return (
@@ -278,7 +278,7 @@ const FormField = <T extends string | number | boolean | NpoChecklist | TechLead
                   maxSelection={item.maxSelections}
                   onChange={(value: boolean, key: string) => {
                     const updatedChecklist: NpoChecklist | TechLeaderChecklist = {
-                      ...values,
+                      ...checklistValues,
                       [key]: value,
                     };
 

@@ -1,4 +1,3 @@
-import { CustomQuestionFields, OtherValueFields } from '../types';
 import {
   NPO_FORM_KEYS_WITH_CHECKLIST,
   NPO_FORM_KEYS_WITH_STRING,
@@ -22,9 +21,4 @@ export type NpoCheckboxFields = Record<NpoCheckboxKeys, boolean>;
 
 export type NpoOtherValuesStringKeys = (typeof NPO_FORM_OTHER_VALUES)[number];
 
-export type NpoFormType = NpoChecklistFields &
-  NpoStringFields &
-  NpoNumberFields &
-  NpoCheckboxFields &
-  CustomQuestionFields &
-  OtherValueFields;
+export type NpoFormType = Record<string, string | number | boolean | NpoChecklist>;

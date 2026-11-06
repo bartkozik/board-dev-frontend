@@ -1,4 +1,3 @@
-import { CustomQuestionFields, OtherValueFields } from '../types';
 import {
   TECH_LEADER_OTHER_VALUES,
   TECH_LEADER_FORM_KEYS_WITH_CHECKLIST,
@@ -18,8 +17,4 @@ export type TechLeaderNumberFields = Record<TechLeaderNumberKeys, number>;
 
 export type TechLeaderOtherValuesStringKeys = (typeof TECH_LEADER_OTHER_VALUES)[number];
 
-export type TechLeaderFormType = TechLeaderChecklistFields &
-  TechLeaderStringFields &
-  TechLeaderNumberFields &
-  CustomQuestionFields &
-  OtherValueFields;
+export type TechLeaderFormType = Record<string, string | number | TechLeaderChecklist>;
