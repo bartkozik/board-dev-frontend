@@ -15,7 +15,8 @@ const Dashboard = (): JSX.Element => {
   const { selectedUser, loadingUser, fetchUser } = userStore;
   const { formCompletionDetails } = formStore;
 
-  const { state } = useLocation();
+  const state: unknown = useLocation().state;
+  const previousPath = state && typeof state === 'object' && 'previous' in state && typeof state.previous === 'string' ? state.previous : undefined;
   const { userMatchCompleted: userIsMatched } = useUserMatch(selectedUser);
 
   const status = useStatus(selectedUser, userIsMatched);
@@ -32,7 +33,7 @@ const Dashboard = (): JSX.Element => {
       <LoadingArea loading={loadingUser} className={styles.container}>
         <PageHeader title={`Welcome, ${userName}`} titleSize="large" />
         <UserStatus status={status} />
-        <MessageAfterCompleted isCompleted={Boolean(selectedUser?.formCompleted)} previousPath={state?.previous} />
+        <MessageAfterCompleted isCompleted={Boolean(selectedUser?.formCompleted)} previousPath={previousPath} />
         <UserTiles
           user={selectedUser}
           formPercentageCompletion={formCompletionDetails.formCompletion}

@@ -12,7 +12,8 @@ export type Env = {
 
 function fetchEnv(name: string, defaultValue = ''): string {
   if (typeof window === 'undefined') return defaultValue;
-  return import.meta.env?.[`VITE_${name}`] ?? (window['env'] ? window['env'][name] : null) ?? defaultValue;
+  const value: unknown = import.meta.env?.[`VITE_${name}`] ?? window.env?.[name];
+  return typeof value === 'string' ? value : defaultValue;
 }
 
 const env: Env = {

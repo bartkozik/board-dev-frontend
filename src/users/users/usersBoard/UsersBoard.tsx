@@ -95,7 +95,7 @@ const UsersBoard = (): JSX.Element => {
       actionsContainer={<AddUser />}
       tabs={USERS_TABS}
       routeName="Users"
-      instruction={INSTRUCTIONS.users[tab || DEFAULT_USERS_TAB]}
+      instruction={tab === 'readyToMatch' || tab === 'matched' ? INSTRUCTIONS.users[tab] : undefined}
     />
   );
 };

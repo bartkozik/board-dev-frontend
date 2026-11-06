@@ -1,8 +1,8 @@
-import { render, RenderResult } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
-export const renderWithRouter = (ui: React.ReactElement, { route = '/' } = {}): RenderResult & { user: typeof userEvent } => {
+export const renderWithRouter = (ui: React.ReactElement, { route = '/' } = {}) => {
   window.history.pushState({}, 'Test page', route);
 
   return {

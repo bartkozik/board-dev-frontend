@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FilterState } from '@/domain/types';
+import { parseFilters } from '@/utils/hooks/useLocalStorageFilters/useLocalStorageFilters';
 import { FilterOption } from '@/matches/types';
 import Chip from '@/theme/chip';
 import Input from '@/theme/input';
@@ -10,7 +10,7 @@ const AMOUNT_OF_VISIBLE_CHIPS = 10;
 const getFiltersFromStorage = (key: string): Set<string> => {
   const stored = localStorage.getItem(key);
   if (stored) {
-    const parsedFilters: FilterState = JSON.parse(stored);
+    const parsedFilters = parseFilters(stored) ?? {};
 
     const selectedValues = Object.values(parsedFilters).reduce((acc, values) => {
       values.forEach((value) => acc.add(value));

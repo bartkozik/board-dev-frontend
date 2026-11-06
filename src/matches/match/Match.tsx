@@ -27,7 +27,9 @@ const Match = (): JSX.Element => {
   const { fetchUser, loadingUser } = userStore;
   const { fetchUsers } = usersStore;
   const [searchParams, setSearchParams] = useSearchParams();
-  const { pathname, state } = useLocation();
+  const { pathname } = useLocation();
+  const state: unknown = useLocation().state;
+  const fromComparing = state && typeof state === 'object' && 'fromComparing' in state && state.fromComparing === true;
   const techLeaderUserIdFromUrl = searchParams.get('techLeaderUserId');
   const npoUserIdFromUrl = searchParams.get('npoUserId');
   const availableRoles = getAvailableRoles(match);
@@ -50,7 +52,7 @@ const Match = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (state?.fromComparing) return;
+    if (fromComparing) return;
     else if (techLeaderUserIdFromUrl && npoUserIdFromUrl) {
       const usersIdsArray = [npoUserIdFromUrl, techLeaderUserIdFromUrl];
       fetchMatch(npoUserIdFromUrl, techLeaderUserIdFromUrl);

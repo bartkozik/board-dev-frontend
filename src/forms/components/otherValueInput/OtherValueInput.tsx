@@ -28,7 +28,7 @@ const OtherValueInput = ({ formConfig, item, onChange }: OtherValueInputProps): 
             label="Please specify"
             maxWidth
             {...field}
-            value={field.value || ''}
+            value={typeof field.value === 'string' ? field.value : ''}
             error={fieldState.error?.message}
             onChange={(e) => {
               clearValidationErrors([itemName]);

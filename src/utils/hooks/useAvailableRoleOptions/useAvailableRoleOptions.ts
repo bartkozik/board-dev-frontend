@@ -8,10 +8,10 @@ interface UseAvailableRoleOptionsProps {
 export const useAvailableRoleOptions = ({
   withoutAdminRoles = false,
 }: UseAvailableRoleOptionsProps): SelectOption[] => {
-  return Object.keys(UserRole)
-    .filter((role) => !(withoutAdminRoles && role === UserRole.Admin))
-    .map((role) => ({
+  return Object.entries(UserRole)
+    .filter(([role]) => !(withoutAdminRoles && role === UserRole.Admin))
+    .map(([role, label]) => ({
       value: role,
-      label: UserRole[role] as string,
+      label,
     }));
 };

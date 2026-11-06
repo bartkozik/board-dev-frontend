@@ -6,7 +6,7 @@ import { NonAdminUserRole } from '@/users/types';
 
 const filterSchema = z.record(z.array(z.string()));
 
-function parseFilters(stored: string): FilterState | null {
+export function parseFilters(stored: string): FilterState | null {
   try {
     return filterSchema.parse(JSON.parse(stored));
   } catch {

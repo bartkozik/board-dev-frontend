@@ -42,9 +42,9 @@ export const useGenerateFormConfig = (
     if (additionalQuestions.length > 0) initializeCustomFormStringFields(additionalQuestionKeys, isNPO);
   }, [additionalQuestions]);
 
-  const configKey = ADDITIONAL_QUESTIONS_KEY[userRole];
+  const configKey = userRole === RawUserRole.Admin ? undefined : ADDITIONAL_QUESTIONS_KEY[userRole];
 
-  if (formConfig[configKey]) formConfig[configKey] = [...additionalQuestions, ...formConfig[configKey]];
+  if (configKey !== undefined && formConfig[configKey]) formConfig[configKey] = [...additionalQuestions, ...formConfig[configKey]];
 
   const steps = isNPO ? NPO_STEPS : TECH_LEADER_STEPS;
   const schema = createFormSchema(customQuestions, userRole);

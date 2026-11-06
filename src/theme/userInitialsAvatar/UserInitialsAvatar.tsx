@@ -39,8 +39,10 @@ const UserInitialsAvatar = <T extends User | RawUser | AuthUser | RawMatch>({
 
     if (!item) return null;
 
-    for (const field of fieldsToCheck)
-      if (field in item && typeof item[field] === 'string') return convertToInitials(item[field]);
+    for (const field of fieldsToCheck) {
+      const value: unknown = Reflect.get(item, field);
+      if (typeof value === 'string') return convertToInitials(value);
+    }
 
     if ('email' in item && typeof item.email === 'string') return item.email.slice(0, INITIALS_LENGTH).toUpperCase();
 

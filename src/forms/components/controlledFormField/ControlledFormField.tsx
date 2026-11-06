@@ -5,7 +5,7 @@ interface ControlledFormFieldProps {
   name: string;
   control: Control;
   shouldUnregister?: boolean;
-  children: (field: ControllerRenderProps, fieldState: { error?: FieldError }) => ReactElement;
+  children: (field: Omit<ControllerRenderProps, 'value'> & { value: unknown }, fieldState: { error?: FieldError }) => ReactElement;
 }
 
 const ControlledFormField = ({

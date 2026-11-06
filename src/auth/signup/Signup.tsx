@@ -17,11 +17,11 @@ import { useFormValidation, useTitle } from '@/utils/hooks';
 import styles from './Signup.module.scss';
 import UserCreatedMessage from './components/UserCreatedMessage';
 
-const SELECT_OPTIONS = Object.keys(UserRole)
-  .filter((role) => role !== UserRole.Admin)
-  .map((role) => ({
+const SELECT_OPTIONS = Object.entries(UserRole)
+  .filter(([role]) => role !== UserRole.Admin)
+  .map(([role, label]) => ({
     value: role,
-    label: UserRole[role],
+    label,
   }));
 
 const Signup = (): React.JSX.Element => {
